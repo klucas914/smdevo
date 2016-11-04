@@ -1,0 +1,15 @@
+<h1>Track</h1>
+<h3>Title:</h3>
+<%= @track.title %>
+
+<h3>Description:</h3>
+<%= @track.description %>
+<p>
+
+<h3>Activities:</h3>
+<%= render @track.activities %>
+
+<h2>Add an activity:</h2>
+<%= render 'activities/form' %>
+
+<%= link_to 'Back', tracks_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receive: MyText
+  reflect: MyText
+  respond: MyText
+  track: one
+
+two:
+  receive: MyText
+  reflect: MyText
+  respond: MyText
+  track: two
