@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @activity.title %>
+</p>
+
+<p>
+  <strong>Receive:</strong>
+  <%= @activity.receive %>
+</p>
+
+<p>
+  <strong>Reflect:</strong>
+  <%= @activity.reflect %>
+</p>
+
+<p>
+  <strong>Respond:</strong>
+  <%= @activity.respond %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_track_activity_path(@activity.track, @activity) %> 
+  <%= link_to 'Back', track_activities_path(@activity.track) %>
+  <%= link_to 'Delete', track_activity_path(@activity.track, @activity), method: :delete %>
+<p>
+
+
+

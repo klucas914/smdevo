@@ -1,15 +1,16 @@
+<p id="notice"><%= notice %></p>
 <h1>Track</h1>
-<h3>Title:</h3>
-<%= @track.title %>
 
-<h3>Description:</h3>
-<%= @track.description %>
+<div class="container">
+  <h3>Title:</h3>
+    <%= @track.title %>
+  <h3>Description:</h3>
+    <%= @track.description %>
+</div>
+
 <p>
-
-<h3>Activities:</h3>
-<%= render @track.activities %>
-
-<h2>Add an activity:</h2>
-<%= render 'activities/form' %>
-
+<div class="action">
+<%= link_to 'View Activities', track_activities_path(@track) %><br />
+<%= link_to 'Edit', edit_track_path(@track) %><br />
 <%= link_to 'Back', tracks_path %>
+</div>

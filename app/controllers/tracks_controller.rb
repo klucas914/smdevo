@@ -44,6 +44,6 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:title, :description)
+    params.require(:track).permit(:title, :description, :activities_attributes => [:title, :receive, :reflect, :respond])
   end
 end

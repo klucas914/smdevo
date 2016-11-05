@@ -1,0 +1,8 @@
+<h1>Edit Activity</h1>
+
+<%= render 'form' %>
+
+<!-- /posts/:post_id/comments/:id -->
+<%= link_to 'Show', [@activity.track, @activity] %> |
+<!-- /posts/:post_id/comments/ -->
+<%= link_to 'Back', track_activities_path(@activity.track) %>

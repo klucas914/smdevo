@@ -1,0 +1,31 @@
+<h1>Activities</h1>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Receive</th>
+    <th>Reflect</th>
+    <th>Respond</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activities.each do |activity| %>
+  <tr>
+    <td><%= activity.title %></td>
+    <td><%= activity.receive %></td>
+    <td><%= activity.reflect %></td>
+    <td><%= activity.respond %></td>
+    <!-- /posts/:post_id/comments/:id -->
+    <td><%= link_to 'Show', [activity.track, activity] %></td>
+    <!-- /posts/:post_id/comments/:id/edit -->
+    <td><%= link_to 'Edit', edit_track_activity_path(activity.track, activity)%></td>
+    <!-- /posts/:post_id/comments/:id -->
+    <td><%= link_to 'Destroy',track_activity_path(activity.track, activity), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Add a New Activity', new_track_activity_path %>
+<br />
+<%= link_to 'Back', tracks_path %><br />
+ <!-- /posts/:post_id/comments/new -->
