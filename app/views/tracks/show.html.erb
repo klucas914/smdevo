@@ -1,16 +1,37 @@
 <p id="notice"><%= notice %></p>
-<h1>Track</h1>
+
+<div class="container-fluid">
 
 <div class="container">
-  <h3>Title:</h3>
-    <%= @track.title %>
-  <h3>Description:</h3>
-    <%= @track.description %>
+  <h1><%= @track.title %></h1>
+    
+  <h3><%= @track.description %></h3>
+    
 </div>
+<p>
+<div class="container">
+<h4>Activities</h4>
+
+<table class="table table-striped">
+  
+  <% @track.activities.each do |activity| %>
+   <tr>
+    <td><%= activity.title %></td>
+    <td><%= activity.receive %></td>
+    <td><%= activity.reflect %></td>
+    <td><%= activity.respond %></td>
+    <td><%= link_to 'Show', [activity.track, activity] %></td>
+    <td><%= link_to 'Edit', edit_track_activity_path(activity.track, activity) %></td>
+    <td><%= link_to 'Destroy',track_activity_path(activity.track, activity), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
 
 <p>
 <div class="action">
-<%= link_to 'View Activities', track_activities_path(@track) %><br />
-<%= link_to 'Edit', edit_track_path(@track) %><br />
-<%= link_to 'Back', tracks_path %>
+<%= link_to 'New Activity', new_track_activity_path(@track) %><br />
+<%= link_to 'Back to Tracks', tracks_path %>
+</div>
 </div>

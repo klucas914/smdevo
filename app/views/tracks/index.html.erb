@@ -1,18 +1,22 @@
+<div class="container-fluid">
 <h1>Tracks</h1>
  
  <p>
 <div class="container">
-<table class="table">
+<table class="table table-striped">
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
  
   <% @tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
       <td><%= track.description %></td>
-      <td><%= link_to 'Show Activities', track_path(track) %></td>
+      <td><%= link_to 'Activities', track_path(track) %></td>
       <td><%= link_to 'Edit', edit_track_path(track) %></td>
       <td><%= link_to 'Destroy', track_path(track),
               method: :delete,
@@ -21,4 +25,5 @@
   <% end %>
 </table>
 <%= link_to 'New', new_track_path  %>
+</div>
 </div>

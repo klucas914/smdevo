@@ -82,5 +82,5 @@ end
 
   private
     def activity_params
-    	params.require(:activity).permit(:title, :receive, :reflect, :respond)
+    	params.require(:activity).permit(:title, :receive, :reflect, :respond, :tracks_attributes => [:title, :description])
     end
