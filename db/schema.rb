@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104033708) do
+ActiveRecord::Schema.define(version: 20161106234338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20161104033708) do
     t.datetime "updated_at", null: false
     t.string   "title"
     t.index ["track_id"], name: "index_activities_on_track_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.datetime "published"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tracks", force: :cascade do |t|
