@@ -5,11 +5,15 @@ class JournalsController < ApplicationController
   # GET /journals.json
   def index
     @journals = Journal.all
+    @posts = Post.all
   end
 
   # GET /journals/1
   # GET /journals/1.json
   def show
+    @journal = Journal.find(params[:id])
+    @posts = Post.all
+    @tracks = Track.all
   end
 
   # GET /journals/new

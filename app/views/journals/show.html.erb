@@ -1,5 +1,40 @@
 <p id="notice"><%= notice %></p>
+<div class="container fluid">
+<h1>My Journal</h1>
 
+<p>
+<h2>New Activity</h2>
+<div class="container">
+<% @tracks.each do |track| %>
+    <div class="card" style="max-width: 20rem;">
+      <div class="card-header"><%= track.title %>
+      </div>
+      <div class="card-block">
+        <p class="card-text"><%= track.description %></p>
+      </div>
+    <div class="card-footer">Begin
+    </div>
+  </div>
+ <% end %>
+ </div>
+
+<p>
+<h2>Posts</h2>
+<div class="container-fluid">
+<% @posts.each do |post| %>
+  <div class="card" style="max-width: 20rem;">
+    <div class="card-header">User_name
+      <div class="container"><%= link_to 'Edit', edit_post_path(post) %></div>
+    </div>
+    <div class="card-block">
+      <p class="card-text"><%= post.content %></p>
+    </div>
+    <div class="card-footer"><%= post.published.strftime("%B %C %r") %>
+    </div>
+  </div>
+<% end %>
+</div>
 
 <%= link_to 'Edit', edit_journal_path(@journal) %> |
 <%= link_to 'Back', journals_path %>
+</div>
