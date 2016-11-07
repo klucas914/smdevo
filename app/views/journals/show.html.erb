@@ -12,7 +12,7 @@
       <div class="card-block">
         <p class="card-text"><%= track.description %></p>
       </div>
-    <div class="card-footer">Begin
+    <div class="card-footer">
     </div>
   </div>
  <% end %>
@@ -34,7 +34,7 @@
   </div>
 <% end %>
 </div>
-
+<%= link_to 'New Post', new_post_path(@journal) %>
 <%= link_to 'Edit', edit_journal_path(@journal) %> |
 <%= link_to 'Back', journals_path %>
 </div>

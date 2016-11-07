@@ -1,22 +1,51 @@
 <p id="notice"><%= notice %></p>
 <div class="container-fluid">
-<h1>Posts</h1>
 
 
-<%= link_to 'New Post', new_post_path %>
-<p>
-</div>
-<div class="container-fluid">
-<% @posts.each do |post| %>
-  <div class="card" style="max-width: 20rem;">
-    <div class="card-header">User_name
-      <div class="container"><%= link_to 'Edit', edit_post_path(post) %></div>
-    </div>
-    <div class="card-block">
-      <p class="card-text"><%= post.content %></p>
-    </div>
-    <div class="card-footer"><%= post.published.strftime("%B %C %r") %>
+<div class="row-fluid">
+  <div class="col-sm-4">
+    <h2>New Activity</h2>
+      <div class="container">
+        <% @tracks.each do |track| %>
+         <div class="card" style="max-width: 20rem;">
+           <div class="card-header"><%= track.title %></div>
+           <div class="card-block">
+             <p class="card-text"><%= track.description %></p>
+           </div>
+           <div class="card-footer">
+             <%= link_to 'Activities', track_activities_path(track) %>
+           </div>
+           
+         </div>
+         <% end %>
+      </div>
+    
+    <p>
+  </div>
+  <div class="col-sm-4">
+    <div class="container-fluid">
+       <h1>Posts</h1>
+       <% @posts.each do |post| %>
+       <div class="card" style="max-width: 20rem;">
+          <div class="card-header">User_name
+            <div class="container">
+              <%= link_to 'Edit', edit_post_path(post) %>
+              <%= link_to 'Delete', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+          <div class="card-block">
+            <p class="card-text"><%= post.content %></p>
+          </div>
+          <div class="card-footer"><%= post.published.strftime("%B %C %r") %>
+          </div>
+       </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+  <div class="col-sm-4">
+    <div class="container-fluid">
+      <%= link_to 'New Post', new_post_path %>
+    </div>
 </div>
