@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(id: :desc)
     @tracks = Track.all
-   
+    
   end
 
   # GET /posts/1

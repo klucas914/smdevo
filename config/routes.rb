@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   	resources :activities
   end
   
-  root 'tracks#index'
+  root 'posts#index'
 end
