@@ -64,7 +64,8 @@ class PostsController < ApplicationController
   end
 
   def user_posts
-    @posts = policy_scope(Post)
+    @posts = policy_scope(Post).order(id: :desc)
+    @tracks = Track.all
   end
 
   private

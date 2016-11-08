@@ -1,3 +1,32 @@
-<h1>Your Posts</h1>
+<div class="container-fluid">
 
-<%= render 'list' %>
+<div class="row-fluid">
+  <div class="col-sm-4">
+    <h2>New Activity</h2>
+      <div class="container">
+        <% @tracks.each do |track| %>
+         <div class="card" style="max-width: 20rem;">
+           <div class="card-header"><%= track.title %></div>
+           <div class="card-block">
+             <p class="card-text"><%= track.description %></p>
+           </div>
+           <div class="card-footer">
+             <%= link_to 'Activities', track_activities_path(track) %>
+           </div> 
+         </div>
+         <% end %>
+      </div>
+  </div>
+  <p>
+
+  <div class="col-sm-4">
+    <div class="container-fluid">
+       <h1>Your Posts</h1>
+         <%= render 'list' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <%= link_to 'New Post', new_post_path %>
+</div>
