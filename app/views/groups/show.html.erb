@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container-fluid">
 <div class="container-fluid">
   <h1><%= @group.title %></h1>
   <% if @group.errors.any? %>
@@ -20,17 +20,30 @@
     <% if @group.roles.empty? %>
       <tr>
         <td> There aren't any members of this group. Add one now...</td>
-    <% end %>
+        <td></td>
+        <td></td>
+      <% end %>
+      </tr>
 
     <% else @group.roles.each do |role| %>
        <tr>
-         <td><%= role.user.name %></td>
+         <td><%= role.user.email %></td>
          <td><%= role.role_type %></td>
          <td><%= link_to 'Remove', method: :delete, class: 'btn btn-danger' %></td>
         </tr>
     <% end %> 
-  </tbody>      
-</table><tr>
-<%= link_to 'Add New User', new_user_path %><br />
-<%= link_to 'Edit', edit_group_path(@group) %>
+     <tr>
+       <%= form_tag url_for(action: :create_role), {method: 'post'} do |f| %>
+         <td><%= text_field_tag 'role[:user][:email]', '', class: 'form-control', placeholder: 'john@example.com' %></td>
+         <td><%= select_tag 'role[:role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
+        <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+         
+
+
 <%= link_to 'Back', groups_path %>
+</div>

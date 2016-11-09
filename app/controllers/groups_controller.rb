@@ -54,14 +54,14 @@ class GroupsController < ApplicationController
   def create_role
     # Find the user by email
     name = role_params[:name]
-    user = User.find_by_name(name)
+    user = User.find_by_email(:email)
 
     # If they don't exist, invite them
-    unless user
+    #unless user
       # NOTE: we give them a fake password for now. Eventually we'll use the
       # Devise invitable gem
-      user = User.create!(name: name, password: '12345678')
-    end
+      #user = User.create!(name: name, email: 'john@email.com')
+    #end
 
     # Add a role for the user, the current group, and their role type
     @group = Group.find(params[:id])
@@ -100,7 +100,6 @@ class GroupsController < ApplicationController
     end
 
     def role_params
-      params
-        .require(:role).permit(:role_type, user: :name)
+      params.require(:role).permit(:role_type, user: :name, )
     end
 end

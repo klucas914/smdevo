@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :roles
   has_many :groups, through: :roles
   has_many :posts, :dependent => :destroy
+  accepts_nested_attributes_for :posts
 end

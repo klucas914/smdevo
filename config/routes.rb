@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :groups
+  resources :groups do |t|
+    member do
+      post :create_role
+    end
+  end
+  resources :users
   resources :posts do
     collection do
       get '/user_posts', to: 'posts#user_posts', as: :user

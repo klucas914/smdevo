@@ -5,8 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all.order(id: :desc)
-    @tracks = Track.all
-
+    @tracks = Track.all  
   end
 
   # GET /posts/1
@@ -27,6 +26,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:published, :content, :user_id)
+      params.require(:post).permit(:published, :content, :user_id, user_attributes: [:name])
     end
 
   end

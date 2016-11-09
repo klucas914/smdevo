@@ -4,8 +4,12 @@ class PostPolicy < ApplicationPolicy
   		scope.where(user: user)
   	end
   end
-  
+
   def destroy?
     record.user == user
+  end
+
+  def edit?
+  	record.user == user
   end
 end 
