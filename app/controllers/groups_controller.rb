@@ -100,6 +100,6 @@ class GroupsController < ApplicationController
     end
 
     def role_params
-      params.require(:role).permit(:role_type, user: :name, )
+      params.require(:role).permit(:role_type, user: :name, user: :email)
     end
 end

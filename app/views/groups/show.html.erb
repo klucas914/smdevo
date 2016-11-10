@@ -33,9 +33,9 @@
         </tr>
     <% end %> 
      <tr>
-       <%= form_tag url_for(action: :create_role), {method: 'post'} do |f| %>
-         <td><%= text_field_tag 'role[:user][:email]', '', class: 'form-control', placeholder: 'john@example.com' %></td>
-         <td><%= select_tag 'role[:role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
+       <%= form_tag url_for(action: :create_role), {method: 'post'} do %>
+         <td><%= text_field_tag 'role[user][email]',"", class: 'form-control', placeholder: 'john@example.com' %></td>
+         <td><%= select_tag 'role[role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
         <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
       <% end %>
     </tr>

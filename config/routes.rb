@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post :create_role
     end
   end
-  resources :users
+  resources :users, only: [:index, :show]
   resources :posts do
     collection do
       get '/user_posts', to: 'posts#user_posts', as: :user

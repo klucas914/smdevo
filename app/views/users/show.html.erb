@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container-fluid">
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+  Name: <%= @user.name %><br />
+  Email: <%= @user.email %><br />
+  Groups: <%= @user.groups %><br />
+ </p> 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+  
 <%= link_to 'Back', users_path %>
+
+</div>
