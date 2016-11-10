@@ -14,7 +14,17 @@ Rails.application.routes.draw do
   resources :journals
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :tracks do
-  	resources :activities
+  	resources :activities do
+      member do
+        get :receive
+      end
+      member do
+        get :reflect
+      end
+      member do
+        get :respond
+      end
+    end
   end
   
   root 'posts#index'

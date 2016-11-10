@@ -77,6 +77,21 @@ class ActivitiesController < ApplicationController
     	format.xml { head :ok }
     end
   end
+
+  def receive
+    @activity = Activity.find(params[:id])
+    track = Track.find(params[:track_id])
+  end
+
+  def reflect
+    @activity = Activity.find(params[:id])
+    track = Track.find(params[:track_id])
+  end
+
+  def respond
+    @activity = Activity.find(params[:id])
+    track = Track.find(params[:track_id])
+  end
 end
 
 

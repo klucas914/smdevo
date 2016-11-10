@@ -1,0 +1,9 @@
+<div class="container-fluid">
+<h1>Receive</h1>
+<p>
+<%= @activity.receive %>
+<p>
+<%= link_to 'Reflect', reflect_track_activity_path %><p>
+<%= link_to 'Back', track_path(@activity.track, @activity) %><p>
+<%= link_to 'Home', root_url %>
+</div>

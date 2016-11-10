@@ -17,17 +17,12 @@
   <% @track.activities.each do |activity| %>
    <tr>
     <td><%= activity.title %></td>
-    <td><%= activity.receive %></td>
-    <td><%= activity.reflect %></td>
-    <td><%= activity.respond %></td>
-    <td><%= link_to 'Show', [activity.track, activity] %></td>
+    <td><%= link_to 'Begin', receive_track_activity_path(activity.track, activity) %></td>
     <td><%= link_to 'Edit', edit_track_activity_path(activity.track, activity) %></td>
     <td><%= link_to 'Destroy',track_activity_path(activity.track, activity), method: :delete %></td>
   </tr>
 <% end %>
 </table>
-
-
 
 <p>
 <div class="action">
