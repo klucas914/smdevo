@@ -1,9 +1,30 @@
 <div class="container-fluid">
-<h1>Receive</h1>
-<p>
-<%= @activity.receive %>
-<p>
-<%= link_to 'Reflect', reflect_track_activity_path %><p>
-<%= link_to 'Back', track_path(@activity.track, @activity) %><p>
+  <div class="card">
+    <div class="card-block">
+      <h1 class="card-title">
+        <%= @activity.track.title %>
+        <h4><%= @activity.track.description %></h4>
+      </h1>
+
+<div class="container-fluid">
+<div class="card" style="max-width: 20rem;">
+
+  <div class="card-block">
+    <h4 class="card-title"><%= @activity.title %></h4>
+      <p class="card-text"><%= @activity.receive %></p>
+<!-- Links -->
+        <a href="<%= receive_track_activity_path %>" class="card-link">Receive</a>
+        <a href="<%= reflect_track_activity_path %>" class="card-link">Reflect</a>
+        <a href="<%= respond_track_activity_path %>" class="card-link">Respond</a>
+  </div>
+ <div>
+</div>
+</div>
+<progress class="progress" style="max-width: 20rem;" value="33" max="100">33%</progress>
+
+<%= link_to 'Back', track_path(@activity.track, @activity) %>  |
 <%= link_to 'Home', root_url %>
+
+  </div>
+ </div>
 </div>
