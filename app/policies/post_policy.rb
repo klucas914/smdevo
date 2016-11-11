@@ -6,7 +6,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    user.admin? || record.user == user
   end
 
   def edit?

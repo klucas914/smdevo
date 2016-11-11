@@ -17,13 +17,19 @@
       <td><%= track.title %></td>
       <td><%= track.description %></td>
       <td><%= link_to 'Activities', track_path(track) %></td>
+      <% if current_user.admin? %>
       <td><%= link_to 'Edit', edit_track_path(track) %></td>
       <td><%= link_to 'Destroy', track_path(track),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td> 
+      <% end %>
+      <td></td>
+      <td></td>
     </tr>
   <% end %>
 </table>
+<% if current_user.admin? %>
 <%= link_to 'New', new_track_path  %>
+<% end %>
 </div>
 </div>

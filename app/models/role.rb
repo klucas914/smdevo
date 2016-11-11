@@ -4,8 +4,7 @@ class Role < ApplicationRecord
 
   enum role_type: {
     teacher: 1,
-    student: 2,
-    admin: 3
+    student: 2
   }
 
   validates :group, presence: true

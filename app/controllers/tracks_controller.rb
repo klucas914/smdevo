@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+  before_action :set_track
+  
   def index
     @tracks = Track.all
   end
@@ -9,6 +11,8 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
+    authorize @track
+    
   end
 
   def edit
@@ -43,6 +47,10 @@ class TracksController < ApplicationController
   end
 
   private
+  def set_track
+    @track = Track.find_by(id: params[:id])
+  end
+
   def track_params
     params.require(:track).permit(:title, :description, :activities_attributes => [:title, :receive, :reflect, :respond])
   end
