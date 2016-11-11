@@ -12,6 +12,8 @@
   <div class="card-block">
     <h4 class="card-title"><%= @activity.title %></h4>
       <p class="card-text"><%= @activity.respond %></p>
+      <p><%= link_to "Create Post", new_post_path %></p>
+      
 <!-- Links -->
         <a href="<%= receive_track_activity_path %>" class="card-link">Receive</a>
         <a href="<%= reflect_track_activity_path %>" class="card-link">Reflect</a>
