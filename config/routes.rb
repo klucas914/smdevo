@@ -4,13 +4,13 @@ Rails.application.routes.draw do
     member do
       post :create_role
     end
-  end
-  resources :users, only: [:index, :show]
-  resources :posts do
-    collection do
-      get '/user_posts', to: 'posts#user_posts', as: :user
+    resources :posts do
+      collection do
+        get '/user_posts', to: 'posts#user_posts', as: :user
+      end
     end
   end
+  resources :users, only: [:index, :show]
   resources :journals
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :tracks do
@@ -27,5 +27,5 @@ Rails.application.routes.draw do
     end
   end
   
-  root 'posts#index'
+  root 'posts#user_posts'
 end

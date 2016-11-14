@@ -21,13 +21,16 @@
 
   <div class="col-sm-4">
     <div class="container-fluid">
-       <h1> Your Posts</h1>
-       <%= link_to 'Switch To Public Posts', posts_path %>
+       <h1><%= @user.name %>'s Posts</h1>
          <%= render 'list' %>
     </div>
   </div>
 </div>
 
 <div class="col-sm-4">
-  <%= link_to 'New Post', new_post_path %>
+  <%= link_to 'New Post' %><br />
+  <p>My Groups</p>
+    <%= @user.groups %>
+      
 </div>
+

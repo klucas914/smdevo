@@ -21,8 +21,8 @@
 
   <div class="col-sm-4">
     <div class="container-fluid">
-       <h1>All Posts</h1>
-       <%= link_to 'Switch To Your Posts', user_posts_path %><br />
+       <h1>Group Posts</h1>
+       <%= link_to 'Switch To Your Posts', user_group_posts_path(:group_id) %><br />
         <%= render 'list' %>
     </div>
   </div>
@@ -30,5 +30,5 @@
 
 
 <div class="col-sm-4">
-  <%= link_to 'New Post', new_post_path %>
+  <%= link_to 'New Post', new_group_post_path(:group_id) %>
 </div>

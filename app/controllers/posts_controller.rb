@@ -1,31 +1,44 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order(id: :desc)
+    @group = Group.find(params[:group_id])
+    @posts = @group.posts
     @tracks = Track.all  
-    @groups = Group.all
-    @user = current_user
-    authorize @posts
+  
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @posts}
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    group = Group.find(params[:group_id])
+    @post = group.posts
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @post }
+    end
   end
 
   # GET /posts/new
   def new
-    @post = current_user.posts.build
-    @groups = Group.all
+    @group = Group.find(params[:group_id])
+    @post = @group.posts.build
     @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => @post }
+    end
   end
 
   # GET /posts/1/edit
   def edit
-    authorize @post
     @groups = Group.all
     @user = current_user
   end
@@ -33,13 +46,14 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    @group = Group.find(params[:group_id])
     @post = current_user.posts.build(post_params)
     @post.user_id = current_user.id
     @groups = Group.all
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to group_posts_path(:group_id), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -65,10 +79,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    authorize @post
+    group = Group.find(params[:group_id])
+    @post = group.posts.find(params[:id])
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to group_posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,18 +91,12 @@ class PostsController < ApplicationController
   def user_posts
     @posts = policy_scope(Post).order(id: :desc)
     @tracks = Track.all
-  end
-
-  def group_posts
-  
+    @user = current_user
   end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
