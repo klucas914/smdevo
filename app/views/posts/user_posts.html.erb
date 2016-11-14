@@ -28,9 +28,14 @@
 </div>
 
 <div class="col-sm-4">
-  <%= link_to 'New Post' %><br />
-  <p>My Groups</p>
-    <%= @user.groups %>
+  <h3>My Groups</h3>
+  <div class="container-fluid">
+    <% @user.groups.each do |group| %>
+         <%= group.title %>
+         <%= link_to 'Show', group_posts_path(group) %><br />
+      <% end %>
+  </div>
       
 </div>
+
 

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
         get '/user_posts', to: 'posts#user_posts', as: :user
       end
     end
+    member do
+      get :group_wall
+    end
   end
   resources :users, only: [:index, :show]
   resources :journals

@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @group = Group.find(params[:group_id])
-    @posts = @group.posts
+    @posts = @group.posts.order(id: :desc)
     @tracks = Track.all  
+    @user = current_user
   
     respond_to do |format|
       format.html
@@ -53,7 +54,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to group_posts_path(:group_id), notice: 'Post was successfully created.' }
+        format.html { redirect_to group_posts_path(@group), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -92,6 +93,8 @@ class PostsController < ApplicationController
     @posts = policy_scope(Post).order(id: :desc)
     @tracks = Track.all
     @user = current_user
+    @groups = Group.all
+    
   end
 
 

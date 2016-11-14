@@ -16,13 +16,25 @@
          </div>
          <% end %>
       </div>
+      <p>
+      <h3>My Groups</h3>
+        <div class="container-fluid">
+      <% @user.groups.each do |group| %>
+         <%= group.title %>
+         <%= link_to 'Show', group_posts_path(group) %><br />
+      <% end %>
+      </div>
   </div>
+  
+
+
+
   <p>
 
   <div class="col-sm-4">
     <div class="container-fluid">
-       <h1>Group Posts</h1>
-       <%= link_to 'Switch To Your Posts', user_group_posts_path(:group_id) %><br />
+       <h1><%= @group.title %> Group's Posts</h1>
+       <%= link_to 'Switch To Your Posts', user_group_posts_path(:group_id) %>  |  <%= link_to 'New Post', new_group_post_path(@group) %><br />
         <%= render 'list' %>
     </div>
   </div>
@@ -30,5 +42,5 @@
 
 
 <div class="col-sm-4">
-  <%= link_to 'New Post', new_group_post_path(:group_id) %>
+  
 </div>
