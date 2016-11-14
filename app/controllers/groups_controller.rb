@@ -80,6 +80,8 @@ class GroupsController < ApplicationController
       end
     end
   end
+  
+
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy

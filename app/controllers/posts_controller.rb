@@ -7,6 +7,8 @@ class PostsController < ApplicationController
     @posts = Post.all.order(id: :desc)
     @tracks = Track.all  
     @groups = Group.all
+    @user = current_user
+    authorize @posts
   end
 
   # GET /posts/1
@@ -18,10 +20,14 @@ class PostsController < ApplicationController
   def new
     @post = current_user.posts.build
     @groups = Group.all
+    @user = current_user
   end
 
   # GET /posts/1/edit
   def edit
+    authorize @post
+    @groups = Group.all
+    @user = current_user
   end
 
   # POST /posts
@@ -73,9 +79,9 @@ class PostsController < ApplicationController
   end
 
   def group_posts
-    @posts = policy_scope(Post).order(id: :desc)
-    @tracks = Track.all
+  
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

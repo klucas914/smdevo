@@ -5,6 +5,10 @@ class PostPolicy < ApplicationPolicy
   	end
   end
 
+  def index?
+    true
+  end  
+
   def destroy?
     user.admin? || record.user == user
   end
