@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     collection do
       get '/user_posts', to: 'posts#user_posts', as: :user
     end
+    collection do
+      get '/group_posts', to: 'posts#group_posts', as: :group
+    end
   end
   resources :journals
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

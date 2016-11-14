@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all.order(id: :desc)
     @tracks = Track.all  
+    @groups = Group.all
   end
 
   # GET /posts/1
@@ -16,6 +17,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = current_user.posts.build
+    @groups = Group.all
   end
 
   # GET /posts/1/edit
@@ -27,6 +29,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.user_id = current_user.id
+    @groups = Group.all
 
     respond_to do |format|
       if @post.save
@@ -69,6 +72,11 @@ class PostsController < ApplicationController
     @tracks = Track.all
   end
 
+  def group_posts
+    @posts = policy_scope(Post).order(id: :desc)
+    @tracks = Track.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -77,7 +85,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:published, :content, :user_id, user_attributes: [:name])
+      params.require(:post).permit(:published, :content, :user_id, :group_id, user_attributes: [:name], group_attributes: [:title])
     end
 
   end

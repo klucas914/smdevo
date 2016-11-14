@@ -1,0 +1,13 @@
+ <div class="col-sm-4">
+    <div class="container-fluid">
+       <h1><%= group.title %> Posts</h1>
+       <%= link_to 'Switch To Public Posts', posts_path %>
+       <%= link_to 'Switch To Your Posts' , user_posts_path %>
+         <%= render 'list' %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <%= link_to 'New Post', new_post_path %>
+</div>
