@@ -1,7 +1,9 @@
 <div class="container">
 <h1>New Post</h1>
+<h4>for <%= @group.title %> Group</h4>
+<p>
 
 <%= render 'form', post: @post %>
 
-<%= link_to 'Back', group_posts_path(:group_id) %>
+<%= link_to 'Back', group_posts_path(@group) %>
 </div>

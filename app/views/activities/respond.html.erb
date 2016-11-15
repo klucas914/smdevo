@@ -12,19 +12,17 @@
   <div class="card-block">
     <h4 class="card-title"><%= @activity.title %></h4>
       <p class="card-text"><%= @activity.respond %></p>
-      <p><%= link_to "Create Post", new_post_path %></p>
+      <p><%= link_to "Create Post" %></p>
       
 <!-- Links -->
-        <a href="<%= receive_track_activity_path %>" class="card-link">Receive</a>
-        <a href="<%= reflect_track_activity_path %>" class="card-link">Reflect</a>
-        <a href="<%= respond_track_activity_path %>" class="card-link">Respond</a>
+        
   </div>
  <div>
 </div>
 </div>
 <progress class="progress" style="max-width: 20rem;" value="99" max="100">99%</progress>
 
-<%= link_to 'Back', track_path(@activity.track, @activity) %>  |
+<%= link_to 'Back', reflect_track_activity_path %>  |
 <%= link_to 'Home', root_url %>
 
 

@@ -40,7 +40,8 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @groups = Group.all
+    @group = Group.find(params[:group_id])
+    @post = @group.posts.find(params[:id])
     @user = current_user
   end
 
@@ -66,9 +67,13 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @group = Group.find(params[:group_id])
+    @post = @group.posts.find(params[:id])
+    @user = current_user
+
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to group_posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -94,7 +99,7 @@ class PostsController < ApplicationController
     @tracks = Track.all
     @user = current_user
     @groups = Group.all
-    
+
   end
 
 

@@ -24,8 +24,12 @@
   <div class="field">
     <%= f.label :group %>
     <%= f.select :group_id, options_for_select(@user.groups.collect{ |g| [g.title, g.id] })  %>
+  </div>
+     
 <p>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+

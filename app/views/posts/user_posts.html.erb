@@ -2,20 +2,7 @@
 
 <div class="row-fluid">
   <div class="col-sm-4">
-    <h2>New Activity</h2>
-      <div class="container">
-        <% @tracks.each do |track| %>
-         <div class="card" style="max-width: 20rem;">
-           <div class="card-header"><%= track.title %></div>
-           <div class="card-block">
-             <p class="card-text"><%= track.description %></p>
-           </div>
-           <div class="card-footer">
-             <%= link_to 'Activities', track_activities_path(track) %>
-           </div> 
-         </div>
-         <% end %>
-      </div>
+  wikis for: prayer requests, bible reading, profile, etc.
   </div>
   <p>
 
@@ -34,6 +21,7 @@
          <%= group.title %>
          <%= link_to 'Show', group_posts_path(group) %><br />
       <% end %>
+      *you have x new activities in this group*
   </div>
       
 </div>

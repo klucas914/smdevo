@@ -17,13 +17,7 @@
          <% end %>
       </div>
       <p>
-      <h3>My Groups</h3>
-        <div class="container-fluid">
-      <% @user.groups.each do |group| %>
-         <%= group.title %>
-         <%= link_to 'Show', group_posts_path(group) %><br />
-      <% end %>
-      </div>
+      
   </div>
   
 
@@ -42,5 +36,11 @@
 
 
 <div class="col-sm-4">
-  
+  <h3>My Groups</h3>
+        <div class="container-fluid">
+      <% @user.groups.each do |group| %>
+         <%= group.title %>
+         <%= link_to 'Show', group_posts_path(group) %><br />
+      <% end %>
+      </div>
 </div>
