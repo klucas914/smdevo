@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @posts = @group.posts.order(id: :desc)
-    @tracks = Track.all  
+    @tracks = @group.tracks.all  
     @user = current_user
   
     respond_to do |format|

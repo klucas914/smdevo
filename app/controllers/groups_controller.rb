@@ -82,9 +82,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def group_wall
-    @group = Group.find(params[:id])
-  end
+  
   
 
   # DELETE /groups/1

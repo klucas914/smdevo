@@ -1,7 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<h1>Journals</h1>
 
+<div class="row-fluid">
+  <div class="col-sm-4">
+  wikis for: prayer requests, bible reading, profile, prayer exercises, etc. Some possibilities for personalization here.
+  </div>
+  <p>
+
+  <div class="col-sm-4">
+    <div class="container-fluid">
+       <h1><%= @user.name %>'s Journal Entries</h1>
+         <%#= render 'list' %>
+         <%= link_to 'New Journal Entry', new_journal_path %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-4">
+  <h3>My Groups</h3>
+  <div class="container-fluid">
+    <% @user.groups.each do |group| %>
+         <%= group.title %>
+         <%= link_to 'Show', group_posts_path(group) %><br />
+      <% end %>
+
+  </div>
 <table>
   <thead>
     <tr>
@@ -22,4 +45,5 @@
 
 <br>
 
-<%= link_to 'New Journal', new_journal_path %>
+
+</div>

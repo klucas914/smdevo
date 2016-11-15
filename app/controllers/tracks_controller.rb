@@ -1,12 +1,15 @@
 class TracksController < ApplicationController
   before_action :set_track
+
   
   def index
     @tracks = Track.all
+    @user = current_user
   end
 
   def show
     @track = Track.find(params[:id])
+
   end
 
   def new
@@ -38,6 +41,18 @@ class TracksController < ApplicationController
   		render 'edit'
   	end
   end
+  
+  def create_selection
+    group_id = selection_params[:group_id]
+    track_id = @track.track_id
+    selection = Selection.new(group_id: group_id, track_id: track_id)
+
+    if selection.save!
+      redirect to group_posts_path(@group)
+    else
+      redirect to tracks_path
+    end
+  end
 
   def destroy
   	@track = Track.find(params[:id])
@@ -47,11 +62,20 @@ class TracksController < ApplicationController
   end
 
   private
+
   def set_track
     @track = Track.find_by(id: params[:id])
   end
+  
+  def group_params
+    params.require(:group).permit(:title)
+  end
 
+  def selection_params
+    params.require(:selection).permit(:group_id, :track_id)
+  end
+  
   def track_params
-    params.require(:track).permit(:title, :description, :activities_attributes => [:title, :receive, :reflect, :respond])
+    params.require(:track).permit(:track_id, :title, :description, :activities_attributes => [:title, :receive, :reflect, :respond])
   end
 end

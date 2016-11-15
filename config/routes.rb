@@ -13,11 +13,14 @@ Rails.application.routes.draw do
       get :group_wall
     end
   end
-  resources :users, only: [:index, :show]
-  resources :journals
+  resources :users, only: [:index, :show] 
+  resources :journals 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :tracks do
-  	resources :activities do
+  resources :tracks do |t|
+  	member do
+      post :create_selection
+    end
+    resources :activities do
       member do
         get :receive
       end
@@ -28,6 +31,7 @@ Rails.application.routes.draw do
         get :respond
       end
     end
+
   end
   
   root 'posts#user_posts'

@@ -5,20 +5,22 @@ class JournalsController < ApplicationController
   # GET /journals.json
   def index
     @journals = Journal.all
-    @posts = Post.all
+    @user = current_user
+ 
   end
 
   # GET /journals/1
   # GET /journals/1.json
   def show
     @journal = Journal.find(params[:id])
-    @posts = Post.all
     @tracks = Track.all
+    @user = current_user
   end
 
   # GET /journals/new
   def new
     @journal = Journal.new
+    @user = current_user
   end
 
   # GET /journals/1/edit
@@ -29,6 +31,7 @@ class JournalsController < ApplicationController
   # POST /journals.json
   def create
     @journal = Journal.new(journal_params)
+    @user = current_user
 
     respond_to do |format|
       if @journal.save
@@ -73,6 +76,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal)
+      params.require(:journal).permit(user_attributes: [:name])
     end
 end
