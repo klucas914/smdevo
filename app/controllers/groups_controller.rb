@@ -10,6 +10,9 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    @track_options = Track
+      .where('id NOT IN (SELECT s.track_id FROM selections s WHERE s.group_id = ?)', @group.id)
+    @track = Track.all
   end
 
   # GET /groups/new
@@ -37,6 +40,18 @@ class GroupsController < ApplicationController
       end
     end
   end
+  
+  # POST /groups/:id/add_track
+  def add_track
+    @group = Group.find(params[:id])
+
+    if Selection.create(group_id: params[:id], track_id: params[:track_id])
+      redirect_to group_path(@group)
+    else
+      render { :show }
+    end
+  end
+
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json

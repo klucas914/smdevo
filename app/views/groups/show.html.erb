@@ -16,6 +16,10 @@
 
 <table class= "table table-striped">
   <tbody>
+     <thead>
+      <th>Group Members</th>
+      <th></th>
+    </thead>
     <% if @group.roles.empty? %>
       <tr>
         <td> There aren't any members of this group. Add one now...</td>
@@ -32,28 +36,56 @@
          <td><%= link_to 'Remove', method: :delete, class: 'btn btn-danger' %></td>
         </tr>
     <% end %> 
+     
      <tr>
        <%= form_tag url_for(action: :create_role), {method: 'post'} do %>
          <td><%= text_field_tag 'role[user][email]',"", class: 'form-control', placeholder: 'john@example.com' %></td>
          <td><%= select_tag 'role[role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
         <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
+        <td></td>
       <% end %>
     </tr>
   </tbody>
 </table>
-<%= link_to 'Back', groups_path %>
-         
-<!--<#%= form_tag create_selection_track_path(:create_selection), {method: 'post'} do %>
-    <tr>
-      <td><#%= select_tag 'selection[group_id]', options_for_select(@user.groups.collect { |g| [g.title, g.id] } ), { class: 'form-control'} %></td>
-      <td><#%= submit_tag 'Add', class: 'btn btn-success' %></td> 
-<#% end %>
 
-<%#= link_to 'Back', groups_path %><br />
-<%#= link_to 'Group Wall', group_wall_group_path(@group) %>
-<%#= link_to 'Group Posts', group_posts_path(@group) %>-->
+ <p>
+
+<table class="table table-striped">
+  <tbody>
+    <thead>
+      <th>Selected Tracks</th>
+      <th></th>
+    </thead>
+  
+  <% if @group.tracks.empty? %>
+    <tr>
+      <td>There aren't any tracks selected for this group. Add one now...</td>
+    </tr>
+    <% end %>
+  
+  <% @group.tracks.each do |track| %>
+    <tr>
+      <td><%= track.title %></td>
+      <td><%= link_to 'Remove', method: :delete, class: 'btn btn-danger' %></td>
+    </tr>
+  <% end %>
+  
+  <tr>
+    <%= form_tag url_for(action: :add_track), {method: 'post'} do %> 
+      <td><%= select_tag :track_id, options_for_select(@track_options.collect{ |t| [t.title, t.id]}) %></td>
+      <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
 </div>
 
+
+
+
+<p>
+<%= link_to 'Back', groups_path %>  |
+<%= link_to 'Posts', group_posts_path(@group) %>
 
 
 

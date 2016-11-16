@@ -1,0 +1,26 @@
+<%= form_for add_track_group_path(group) do |f| %>
+    <% if group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+      <% group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :select_a_group_to_add %>
+    <%= f.select :track_id, options_for_select(@track_options.collect{ |t| [t.title, t.id]}) %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+  
