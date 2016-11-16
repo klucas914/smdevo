@@ -1,6 +1,6 @@
 class JournalsController < ApplicationController
-  before_action :set_journal, only: [:show, :edit, :update, :destroy]
-
+  
+  
   # GET /journals
   # GET /journals.json
   def index
@@ -14,13 +14,13 @@ class JournalsController < ApplicationController
   def show
     @journal = Journal.find(params[:id])
     @tracks = Track.all
-    @user = current_user
+    @user = current_user.id
   end
 
   # GET /journals/new
   def new
     @journal = Journal.new
-    @user = current_user
+    @user = current_user.id
   end
 
   # GET /journals/1/edit
@@ -31,7 +31,7 @@ class JournalsController < ApplicationController
   # POST /journals.json
   def create
     @journal = Journal.new(journal_params)
-    @user = current_user
+    @user = current_user.id
 
     respond_to do |format|
       if @journal.save
@@ -63,16 +63,14 @@ class JournalsController < ApplicationController
   def destroy
     @journal.destroy
     respond_to do |format|
-      format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to user_journals_url, notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_journal
-      @journal = Journal.find(params[:id])
-    end
+    
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params

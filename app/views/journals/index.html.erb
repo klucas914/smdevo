@@ -10,11 +10,30 @@
   <div class="col-sm-4">
     <div class="container-fluid">
        <h1><%= @user.name %>'s Journal Entries</h1>
-         <%#= render 'list' %>
-         <%= link_to 'New Journal Entry', new_journal_path %>
+        <%= link_to 'New Journal Entry', new_user_journal_path %>
+<p>
+        <table>
+         <thead>
+          <tr>
+           <th colspan="3"></th>
+            </tr>
+          </thead>
+
+         <tbody>
+          <% @journals.each do |journal| %>
+           <tr>
+             <td><%= journal.entry %></td>
+             <td><%= link_to 'Show', journal %></td>
+             <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
+            <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+         <% end %>
+        </tbody>
+       </table>
+         
     </div>
   </div>
-</div>
+
 
 <div class="col-sm-4">
   <h3>My Groups</h3>
@@ -23,27 +42,7 @@
          <%= group.title %>
          <%= link_to 'Show', group_posts_path(group) %><br />
       <% end %>
-
   </div>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @journals.each do |journal| %>
-      <tr>
-        <td><%= link_to 'Show', journal %></td>
-        <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
-        <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 
 
 </div>

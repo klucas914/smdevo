@@ -5,8 +5,6 @@
 <div class="container">
 <table class="table table-striped">
   <tr>
-    <th>Group</th>
-    <th>Track ID</th>
     <th>Title</th>
     <th>Description</th>
     <th></th>
@@ -15,14 +13,8 @@
     <th></th>
     <th></th>
   </tr>
-
- 
    
      <% @tracks.each do |track| %>
-     <%= form_tag create_selection_track_path(:create_selection), {method: 'post'} do %>
-    <tr>
-      <td><%= select_tag 'selection[group_id]', options_for_select(@user.groups.collect { |g| [g.title, g.id] } ), { class: 'form-control'} %></td>
-      <td><%= track.id %></td>
       <td><%= track.title %></td>
       <td><%= track.description %></td>
       <td><%= link_to 'Activities', track_path(track) %></td>
@@ -31,8 +23,6 @@
       <td><%= link_to 'Destroy', track_path(track),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>  
-      <td><%= submit_tag 'Add', class: 'btn btn-success' %></td> 
-      <% end %>
       <% end %>
       <td></td>
       <td></td>

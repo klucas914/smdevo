@@ -4,25 +4,24 @@
   <div class="col-sm-4">
     <h2>New Activity</h2>
       <div class="container">
-        <% @tracks.each do |track| %>
-         <div class="card" style="max-width: 20rem;">
-           <div class="card-header"><%= track.title %></div>
-           <div class="card-block">
-             <p class="card-text"><%= track.description %></p>
-           </div>
-           <div class="card-footer">
-             <%= link_to 'Activities', track_path(track) %>
-           </div> 
-         </div>
+         <% if @tracks.empty? %>
+            <p> There aren't any new activities.</p>
+          <% end %>
+         <% else @tracks.each do |track| %>
+          <div class="card" style="max-width: 20rem;">
+            <div class="card-header"><%= track.title %></div>
+            <div class="card-block">
+                <p class="card-text"><%= track.description %></p>
+            </div>
+            <div class="card-footer">
+              <%= link_to 'Activities', track_path(track) %>
+            </div> 
+          </div>
          <% end %>
       </div>
       <p>
-      
   </div>
   
-
-
-
   <p>
 
   <div class="col-sm-4">

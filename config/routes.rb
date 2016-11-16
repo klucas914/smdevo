@@ -13,8 +13,9 @@ Rails.application.routes.draw do
       get :group_wall
     end
   end
-  resources :users, only: [:index, :show] 
-  resources :journals 
+  resources :users, only: [:index, :show] do
+    resources :journals, shallow: true
+  end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :tracks do |t|
   	member do

@@ -41,13 +41,17 @@
     </tr>
   </tbody>
 </table>
-
+<%= link_to 'Back', groups_path %>
          
+<!--<#%= form_tag create_selection_track_path(:create_selection), {method: 'post'} do %>
+    <tr>
+      <td><#%= select_tag 'selection[group_id]', options_for_select(@user.groups.collect { |g| [g.title, g.id] } ), { class: 'form-control'} %></td>
+      <td><#%= submit_tag 'Add', class: 'btn btn-success' %></td> 
+<#% end %>
 
-
-<%= link_to 'Back', groups_path %><br />
-<%= link_to 'Group Wall', group_wall_group_path(@group) %>
-<%= link_to 'Group Posts', group_posts_path(@group) %>
+<%#= link_to 'Back', groups_path %><br />
+<%#= link_to 'Group Wall', group_wall_group_path(@group) %>
+<%#= link_to 'Group Posts', group_posts_path(@group) %>-->
 </div>
 
 

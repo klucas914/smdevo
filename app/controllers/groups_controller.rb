@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    @group = Group.find(params[:id])
   end
 
   # POST /groups
@@ -40,6 +41,8 @@ class GroupsController < ApplicationController
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
   def update
+    @group = Group.find(params[:id])
+
     respond_to do |format|
       if @group.update(group_params)
         format.html { redirect_to @group, notice: 'Group was successfully updated.' }
@@ -88,6 +91,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
