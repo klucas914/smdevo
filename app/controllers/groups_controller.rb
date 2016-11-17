@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @track_options = Track
       .where('id NOT IN (SELECT s.track_id FROM selections s WHERE s.group_id = ?)', @group.id)
-    @track = Track.all
+    #@track = Track.all
   end
 
   # GET /groups/new
