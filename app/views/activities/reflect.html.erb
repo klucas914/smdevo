@@ -1,29 +1,31 @@
 <div class="container-fluid">
-  <div class="card">
-    <div class="card-block">
-      <h1 class="card-title">
-        <%= @activity.track.title %>
-        <h4><%= @activity.track.description %></h4>
-      </h1>
-
-<div class="container-fluid">
-<div class="card" style="max-width: 20rem;">
-
-  <div class="card-block">
-    <h4 class="card-title"><%= @activity.title %></h4>
-      <p class="card-text"><%= @activity.reflect %></p>
-<!-- Links -->
-        
-  </div>
- <div>
-</div>
-</div>
+<div class="col-sm-6">
+  <div class="card card-block">
+    <h4 class="card-title"><%= @activity.track.title %>  |   <%= @activity.title %></h4>
+      <div class="container">
+        <div class="card">
+          <div class="card-header">Reflect</div>
+            <div class="card-block">
+              <p class="card-text"><%= @activity.reflect %></p>
+            </div>
+        </div>
+      </div>
+  </div> 
 
 
+
+  
 <%= link_to 'Back', receive_track_activity_path %>  |
 <%= link_to 'Home', root_url %> |
 <%= link_to 'Next', respond_track_activity_path %>
-</progress>
-  </div>
- </div>
+</div>  
+
 </div>
+
+
+
+
+
+  
+ 
+

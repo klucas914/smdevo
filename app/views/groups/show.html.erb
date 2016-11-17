@@ -33,7 +33,7 @@
          <td><%= role.user.name %></td>
          <td><%= role.user.email %></td>
          <td><%= role.role_type %></td>
-         <td><%= link_to 'Remove', method: :delete, class: 'btn btn-danger' %></td>
+         <td><%= link_to 'Remove', {method: 'delete'}, class: 'btn btn-danger' %></td>
         </tr>
     <% end %> 
      
@@ -66,7 +66,7 @@
   <% @group.tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
-      <td><%= link_to 'Remove', method: :delete, class: 'btn btn-danger' %></td>
+      <td><%= link_to 'Remove', add_track_group_path, data: { confirm: 'Are you sure?' },  method: :delete, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
   

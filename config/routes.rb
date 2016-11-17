@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
     member do
       post :add_track, path: '/add_track'
+      delete :add_track
     end
     resources :posts do
       collection do

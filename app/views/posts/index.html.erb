@@ -3,7 +3,7 @@
 <div class="row-fluid">
   <div class="col-sm-4">
     <div class="card card-block">
-      <h4 class="card-title">Tracks</h4>
+      <h4 class="card-title">Activities</h4>
       <div class="container">
          <% if @tracks.empty? %>
             <p> There aren't any new activities.</p>
@@ -31,7 +31,7 @@
     <div class="card card-block">
       <h4 class="card-title"><%= @group.title %> Group's Posts</h4>
       <div class="container-fluid">
-       <%= link_to 'Switch To Your Posts', user_group_posts_path(:group_id) %>  |  <%= link_to 'New Post', new_group_post_path(@group) %><br />
+       <%= link_to 'New Post', new_group_post_path(@group) %><br />
        <p>
         <%= render 'list' %>
     </div>
@@ -41,6 +41,14 @@
 
 
 <div class="col-sm-4">
+  <div class="card card-block">
+    <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
+      <p>New posts will be public.</p>
+        <div class="container-fluid">
+         <a href="<%= user_group_posts_path(:group_id) %>" class="list-group-item list-group-item-action">Switch to your personal page</a>
+      </div>
+  </div>
+
   <div class="card card-block">
     <h4 class="card-title">My Groups</h4>
         <div class="container-fluid">
