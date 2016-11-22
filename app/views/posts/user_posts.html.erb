@@ -1,24 +1,23 @@
 <div class="container-fluid">
 
 <div class="row-fluid">
-  <div class="col-sm-4">
-  <div class="card card-block">
-    <h4 class="card-title">Personalizations</h4>
-  wikis for: prayer requests, bible reading, profile, prayer exercises, etc. Some possibilities for personalization here.
-  </div>
-</div>
-  <p>
-
-  <div class="col-sm-4">
-    <div class="card card-block">
+   
+  <div class="col-sm-7">
+      <div class="card card-block">
       <h4 class="card-title"><%= @user.name %>'s Posts</h4>
-        <div class="container-fluid">
+      <%= link_to 'New Journal Post' %>
+      </div>
+
+      <!--<div class="card card-block">-->
+       
+        <p>
          <%= render 'list' %>
-    </div>
+   
+      <!-- </div> -->
   </div>
-</div>
 
 <div class="col-sm-4">
+ 
   <div class="card card-block">
     <h4 class="card-title">You are on your personal page.</h4>
       <p>New posts will be kept private unless marked public.</p>
@@ -29,13 +28,13 @@
       <h4 class="card-title">My Groups</h4>
      <div class="container-fluid">
     <% @user.groups.each do |group| %>
-         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a>
+         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
       <% end %>
 
-  </div>
+  
  </div>     
 </div>
-
+</div>
 
 
 

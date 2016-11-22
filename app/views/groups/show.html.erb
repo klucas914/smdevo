@@ -2,6 +2,9 @@
 <div class="container">
 <div class="card card-block">
   <h1 class="card-title"><%= @group.title %></h1>
+</div>
+
+  <div class="card card-block">
   <p class="card-text">
   <% if @group.errors.any? %>
     <div id= "error_explanation">
@@ -15,13 +18,13 @@
     </div>
   <% end %>
 
-
+<p>
 <table class= "table table-striped">
   <tbody>
      <thead>
       <th>Group Members</th>
-      <th></th>
-      <th></th>
+      <th>Email</th>
+      <th>Role</th>
       <th></th>
     </thead>
     <% if @group.roles.empty? %>
@@ -51,9 +54,11 @@
     </tr>
   </tbody>
 </table>
-
+</div>
  <p></p>
 
+<div class="card card-block">
+<p>
 <table class="table table-striped">
   <tbody>
     <thead>
@@ -70,7 +75,7 @@
   <% @group.tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
-      <td><%= link_to 'Remove',  method: :delete, class: 'btn btn-danger' %></td>
+      <td><%= link_to 'Remove',  {method: 'delete'}, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
   
@@ -82,7 +87,7 @@
   </tr>
   </tbody>
 </table>
-
+</div>
 <p>
 <%= link_to 'Back', groups_path %>  |
 <%= link_to 'Posts', group_posts_path(@group) %>
