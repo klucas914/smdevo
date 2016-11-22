@@ -12,11 +12,8 @@ Rails.application.routes.draw do
         get '/user_posts', to: 'posts#user_posts', as: :user
       end
     end
-    member do
-      get :group_wall
-    end
   end
-  resources :users, only: [:index, :show] do
+  resources :users do
     resources :journals, shallow: true
   end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
