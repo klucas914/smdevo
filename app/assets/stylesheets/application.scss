@@ -16,15 +16,24 @@
 @import "bootstrap";
 
 .jumbotron {
-	background-color: #FF5733;
-	color: white;
+	background-color: #F95F48;
+	color:  white;
 	margin:0;
+	text-align: center;
+	font-size: xx-large;
 }
 
 body {
-	background-color: #D3D3D3;
+	background-color: #D3D3D3;   
 }
 
-.navbar {
-	background-color: #FFC300;
+nav {
+	background-color: #D3D3D3;
+
+
+	.ul .li {
+	  color: white;
+	}
 }
+
+

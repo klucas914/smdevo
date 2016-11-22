@@ -1,25 +1,25 @@
-<div class="container-fluid">
-<div class="col-sm-6">
-  <div class="card card-block">
-    <h4 class="card-title"><%= @activity.track.title %>  |   <%= @activity.title %></h4>
-      <div class="container">
-        <div class="card">
+<p>
+<div class="container">
+<div class="card card-block">
+  <h1 class="card-title"><%= @activity.track.title %></h1>
+  <h4 class="card-title"><%= @activity.title %></h4>
+  <p class="card-text">
+      <div class="card">
           <div class="card-header">Respond</div>
             <div class="card-block">
               <p class="card-text"><%= @activity.respond %></p>
-              <p><%= link_to 'Create Post' %></p>
+            <p>I want to respond with a personal post: <%= link_to 'Journal' %></p>
+            <p>I want to respond by posting to a group: <%= link_to 'Select Group' %></p>
+
             </div>
         </div>
-      </div>
-  </div> 
-
-
-
-  
+      
+  </p>
 <%= link_to 'Back', reflect_track_activity_path %>  |
 <%= link_to 'Home', root_url %>
 </div>  
-
 </div>
 
+  
+ 
 

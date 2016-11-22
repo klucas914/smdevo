@@ -1,9 +1,13 @@
-<div class="container-fluid">
-<h1>Tracks</h1>
- 
+<p>
+<div class="container">
+<div class="card card-block">
+  <h1 class="card-title">Tracks</h1>
+  <p class="card-text">
+
  <p>
 <div class="container">
 <table class="table table-striped">
+  <thead>
   <tr>
     <th>Title</th>
     <th>Description</th>
@@ -13,7 +17,9 @@
     <th></th>
     <th></th>
   </tr>
+  </thead>
    
+   <tbody>
      <% @tracks.each do |track| %>
       <td><%= track.title %></td>
       <td><%= track.description %></td>
@@ -28,10 +34,13 @@
       <td></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 <% if current_user.admin? %>
 <%= link_to 'New', new_track_path  %>
 <% end %>
+</div>
+</p>
 </div>
 </div>
 

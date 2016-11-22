@@ -1,17 +1,22 @@
-<div class="container-fluid">
-
-<div class="container">
-  <h1><%= @track.title %></h1>
-    
-  <h3><%= @track.description %></h3>
-    
-</div>
 <p>
 <div class="container">
-<h4>Activities</h4>
+<div class="card card-block">
+  <h1 class="card-title"><%= @track.title %></h1>
+  <p class="card-text">
+    
+  <p><%= @track.description %></p>
+   
+<p>
+<div class="container">
 
 <table class="table table-striped">
-  
+  <thead>
+    <th><h4>Activities</h4></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+
   <% @track.activities.each do |activity| %>
    <tr>
     <td><%= activity.title %></td>
@@ -24,8 +29,10 @@
 
 <p>
 <div class="action">
-<%= link_to 'New Activity', new_track_activity_path(@track) %><br />
+<%= link_to 'New Activity', new_track_activity_path(@track) %>  |
 <%= link_to 'Back to Tracks', tracks_path %>
+</div>
+</p>
 </div>
 </div>
 

@@ -1,8 +1,11 @@
-<div class="container-fluid">
-<h3>Activities</h3>
-
+<p>
+<div class="container">
+<div class="card card-block">
+  <h1 class="card-title"><h3>Activities</h3></h1>
+  <p class="card-text">
 
 <table class="table table-striped">
+  <thead>
   <tr>
     <th>Title</th>
     <th>Receive</th>
@@ -11,7 +14,9 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
+  </thead>
 
 <% @activities.each do |activity| %>
   <tr>
@@ -29,8 +34,9 @@
   </tr>
 <% end %>
 </table>
-<%= link_to 'Add a New Activity', new_track_activity_path %>
-<br />
+<%= link_to 'Add a New Activity', new_track_activity_path %>  |
 <%= link_to 'Back', tracks_path %><br />
  <!-- /posts/:post_id/comments/new -->
+ </p>
+ </div>
  </div>

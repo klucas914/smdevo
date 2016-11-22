@@ -1,6 +1,8 @@
-<div class="container">
-
 <p id="notice"><%= notice %></p>
+<div class="container">
+<div class="card card-block">
+  <h1 class="card-title"></h1>
+  <p class="card-text">
 
 <p>
   <strong>Activity:</strong>
@@ -23,11 +25,13 @@
 </p>
 
 <p>
-  <%= link_to 'Edit', edit_track_activity_path(@activity.track, @activity) %> 
-  <%= link_to 'Back', track_activities_path(@activity.track) %>
+  <%= link_to 'Edit', edit_track_activity_path(@activity.track, @activity) %>  | 
+  <%= link_to 'Back', track_activities_path(@activity.track) %>  |
   <%= link_to 'Delete', track_activity_path(@activity.track, @activity), method: :delete %>
 <p>
 
+</p>
+</div>
 </div>
 
 

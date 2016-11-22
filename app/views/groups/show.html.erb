@@ -1,6 +1,8 @@
-<div class="container-fluid">
-<div class="container-fluid">
-  <h1><%= @group.title %></h1>
+<p>
+<div class="container">
+<div class="card card-block">
+  <h1 class="card-title"><%= @group.title %></h1>
+  <p class="card-text">
   <% if @group.errors.any? %>
     <div id= "error_explanation">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -12,12 +14,14 @@
       </ul>
     </div>
   <% end %>
-</div>
+
 
 <table class= "table table-striped">
   <tbody>
      <thead>
       <th>Group Members</th>
+      <th></th>
+      <th></th>
       <th></th>
     </thead>
     <% if @group.roles.empty? %>
@@ -48,7 +52,7 @@
   </tbody>
 </table>
 
- <p>
+ <p></p>
 
 <table class="table table-striped">
   <tbody>
@@ -66,7 +70,7 @@
   <% @group.tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
-      <td><%= link_to 'Remove', add_track_group_path, data: { confirm: 'Are you sure?' },  method: :delete, class: 'btn btn-danger' %></td>
+      <td><%= link_to 'Remove',  method: :delete, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
   
@@ -78,14 +82,13 @@
   </tr>
   </tbody>
 </table>
-</div>
-
-
-
 
 <p>
 <%= link_to 'Back', groups_path %>  |
 <%= link_to 'Posts', group_posts_path(@group) %>
+</p>
+</div>
+</div>
 
 
 

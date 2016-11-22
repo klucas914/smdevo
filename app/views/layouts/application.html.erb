@@ -10,7 +10,7 @@
 
   <body>
     
-    <nav class="navbar navbar-inverse" id="admin">
+    <nav class="navbar" id="admin">
     <div class="container">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
@@ -37,8 +37,8 @@
       </div>
     </div>
    
-
-    <nav class="navbar navbar-light bg-faded">
+   <% if user_signed_in? %>
+    <nav class="navbar">
       <a class="navbar-brand" href="<%= root_path %>">Home</a>
       
       <ul class="nav navbar-nav pull-xs-right">
@@ -57,7 +57,7 @@
       </ul>
       
     </nav>
- 
+ <% end %>
    
 <body>
 
