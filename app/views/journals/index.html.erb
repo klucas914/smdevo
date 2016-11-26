@@ -3,7 +3,7 @@
 <div class="row-fluid">
   <div class="col-sm-7">
     <div class="card card-block">
-    <h4 class="card-title"><%= @current_user.name %>'s Journal Entries</h4>
+    <h4 class="card-title">Journal Entries</h4>
     
         <%= link_to 'New Journal Entry', new_journal_path %>
 <p>
@@ -16,11 +16,11 @@
 
          <tbody>
           <%# @user.journals.each do |journal| %>
-          <%= @journals.each do |journal| %> 
+          <% @journals.each do |journal| %> 
            <tr>
              <td><%= journal.entry %></td>
-             <td><%= link_to 'Show', journal_path(journal) %></td>
-             <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
+             <td><%= link_to 'Show', journal_path(journal) %>  |</td>  
+             <td><%= link_to 'Edit', edit_journal_path(journal) %>  |</td> 
             <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
          <% end %>

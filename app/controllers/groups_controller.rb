@@ -109,6 +109,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @track = Track.find(params[:id])
     @group.destroy
+    @track.destroy
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }

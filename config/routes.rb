@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :journals
+  resources :journals do
+    collection do
+      get '/user_journals', to: 'journals#user_journals', as: :user
+    end
+  end
   resources :users
   resources :groups do |t|
     member do

@@ -78,6 +78,14 @@ class JournalsController < ApplicationController
     end
   end
 
+  def user_journals
+    @journals = policy_scope(Journal).order(id: :desc)
+    @tracks = Track.all
+    @user = current_user
+    @groups = Group.all
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     
