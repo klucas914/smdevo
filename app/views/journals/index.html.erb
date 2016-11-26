@@ -1,16 +1,11 @@
 <div class="container-fluid">
-
-
-<div class="row-fluid">
-  <div class="col-sm-4">
-  wikis for: prayer requests, bible reading, profile, prayer exercises, etc. Some possibilities for personalization here.
-  </div>
   <p>
-
-  <div class="col-sm-4">
-    <div class="container-fluid">
-       <h1><%= @user.name %>'s Journal Entries</h1>
-        <%= link_to 'New Journal Entry', new_user_journal_path %>
+<div class="row-fluid">
+  <div class="col-sm-7">
+    <div class="card card-block">
+    <h4 class="card-title"><%= @current_user.name %>'s Journal Entries</h4>
+    
+        <%= link_to 'New Journal Entry', new_journal_path %>
 <p>
         <table>
          <thead>
@@ -20,10 +15,11 @@
           </thead>
 
          <tbody>
-          <% @journals.each do |journal| %>
+          <%# @user.journals.each do |journal| %>
+          <%= @journals.each do |journal| %> 
            <tr>
              <td><%= journal.entry %></td>
-             <td><%= link_to 'Show', journal %></td>
+             <td><%= link_to 'Show', journal_path(journal) %></td>
              <td><%= link_to 'Edit', edit_journal_path(journal) %></td>
             <td><%= link_to 'Destroy', journal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
@@ -36,13 +32,24 @@
 
 
 <div class="col-sm-4">
-  <h3>My Groups</h3>
-  <div class="container-fluid">
-    <% @user.groups.each do |group| %>
-         <%= group.title %>
-         <%= link_to 'Show', group_posts_path(group) %><br />
-      <% end %>
+  <div class="card card-block">
+    <h4 class="card-title">You are on your personal page.</h4>
+      <p>New posts will be kept private unless marked public.</p>
+        
   </div>
 
+   <div class="card card-block">
+      <h4 class="card-title">My Groups</h4>
+     <div class="container-fluid">
+       <% @user.groups.each do |group| %>
+         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
+      <% end %>
+     </div>     
+   </div>
 
 </div>
+
+
+
+
+

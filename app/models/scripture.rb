@@ -1,0 +1,2 @@
+class Scripture < ApplicationRecord
+end

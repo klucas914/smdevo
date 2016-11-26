@@ -23,7 +23,7 @@
      <% @tracks.each do |track| %>
       <td><%= track.title %></td>
       <td><%= track.description %></td>
-      <td><%= link_to 'Activities', track_path(track) %></td>
+      <td><%= link_to 'View Activities', track_path(track) %></td>
       <% if current_user.admin? %>
       <td><%= link_to 'Edit', edit_track_path(track) %></td>
       <td><%= link_to 'Destroy', track_path(track),

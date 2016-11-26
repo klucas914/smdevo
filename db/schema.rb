@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161115110303) do
+ActiveRecord::Schema.define(version: 20161126000627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 20161115110303) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "entry"
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_journals_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -59,6 +57,17 @@ ActiveRecord::Schema.define(version: 20161115110303) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_roles_on_group_id", using: :btree
     t.index ["user_id"], name: "index_roles_on_user_id", using: :btree
+  end
+
+  create_table "scriptures", force: :cascade do |t|
+    t.string   "verse"
+    t.text     "passage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "book_name"
+    t.integer  "chapter_id"
+    t.integer  "verse_id"
+    t.text     "verse_text"
   end
 
   create_table "selections", force: :cascade do |t|
@@ -96,7 +105,6 @@ ActiveRecord::Schema.define(version: 20161115110303) do
   end
 
   add_foreign_key "activities", "tracks"
-  add_foreign_key "journals", "users"
   add_foreign_key "posts", "groups"
   add_foreign_key "posts", "users"
 end

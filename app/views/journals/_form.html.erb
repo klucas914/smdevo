@@ -1,4 +1,4 @@
-<%= form_for (new_user_journal_path) do |f| %>
+<%= form_for (journal) do |f| %>
   <% if @journal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(journal.errors.count, "error") %> prohibited this journal from being saved:</h2>

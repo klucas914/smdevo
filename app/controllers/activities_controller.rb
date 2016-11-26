@@ -1,5 +1,6 @@
-class ActivitiesController < ApplicationController
-  
+class ActivitiesController < ApplicationController 
+
+
   def index
     track = Track.find(params[:track_id])
     @activities = track.activities
@@ -81,6 +82,7 @@ class ActivitiesController < ApplicationController
   def receive
     @activity = Activity.find(params[:id])
     track = Track.find(params[:track_id])
+
   end
 
   def reflect

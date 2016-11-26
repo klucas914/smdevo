@@ -4,34 +4,38 @@ class JournalsController < ApplicationController
   # GET /journals
   # GET /journals.json
   def index
-    @journals = Journal.all
     @user = current_user
- 
+    @journals = Journal.all
+    #@user = User.find(params[:id])
+    #@journals = @user.journals.all
   end
 
   # GET /journals/1
   # GET /journals/1.json
   def show
+    @user = current_user
     @journal = Journal.find(params[:id])
-    @tracks = Track.all
-    @user = current_user.id
   end
 
   # GET /journals/new
   def new
+    @user = current_user
     @journal = Journal.new
-    @user = current_user.id
   end
 
   # GET /journals/1/edit
   def edit
+    @user = current_user
+    @journal = Journal.find(params[:id])
   end
 
   # POST /journals
   # POST /journals.json
   def create
+    @user = current_user
     @journal = Journal.new(journal_params)
-    @user = current_user.id
+    #@journal = Journal.new(journal_params)
+    #@user = current_user
 
     respond_to do |format|
       if @journal.save
@@ -47,6 +51,10 @@ class JournalsController < ApplicationController
   # PATCH/PUT /journals/1
   # PATCH/PUT /journals/1.json
   def update
+    #raise params.inspect
+    @user = current_user
+    @journal = Journal.find(params[:id])
+    
     respond_to do |format|
       if @journal.update(journal_params)
         format.html { redirect_to @journal, notice: 'Journal was successfully updated.' }
@@ -61,9 +69,11 @@ class JournalsController < ApplicationController
   # DELETE /journals/1
   # DELETE /journals/1.json
   def destroy
+    @user = current_user
+    @journal = Journal.find(params[:id])
     @journal.destroy
     respond_to do |format|
-      format.html { redirect_to user_journals_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +84,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(user_attributes: [:name])
+      params.require(:journal).permit(:entry)
     end
 end

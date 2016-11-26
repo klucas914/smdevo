@@ -1,0 +1,36 @@
+<div class="container-fluid">
+<%= form_for(@scripture) do |f| %>
+  <% if @scripture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scripture.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @scripture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div class="field">
+    <%= f.label :book_name %><br />
+    <%= f.text_field :book_name %>
+</div>
+<div class="field">
+    <%= f.label :chapter_id %><br />
+    <%= f.text_area :chapter_id %>
+</div>
+<div class="field">
+    <%= f.label :verse_id %><br />
+    <%= f.text_area :verse_id %>
+</div>
+<div class="field">
+    <%= f.label :verse_text %><br />
+    <%= f.text_area :verse_text %>
+</div>
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+<% end %>
+</div>

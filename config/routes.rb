@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :journals
+  resources :users
   resources :groups do |t|
     member do
       post :create_role
@@ -13,10 +15,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :users do
-    resources :journals, shallow: true
-  end 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   resources :tracks do |t|
   	member do
       post :create_selection
@@ -32,8 +31,7 @@ Rails.application.routes.draw do
         get :respond
       end
     end
-
   end
-  
+  resources :scriptures
   root 'posts#user_posts'
 end

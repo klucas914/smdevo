@@ -21,15 +21,18 @@
    <tr>
     <td><%= activity.title %></td>
     <td><%= link_to 'Begin', receive_track_activity_path(activity.track, activity) %></td>
+    <% if current_user.admin? %>
     <td><%= link_to 'Edit', edit_track_activity_path(activity.track, activity) %></td>
     <td><%= link_to 'Destroy',track_activity_path(activity.track, activity), method: :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <p>
 <div class="action">
-<%= link_to 'New Activity', new_track_activity_path(@track) %>  |
+<% if current_user.admin? %>
+<%= link_to 'New Activity', new_track_activity_path(@track) %>  |<% end %>
 <%= link_to 'Back to Tracks', tracks_path %>
 </div>
 </p>
