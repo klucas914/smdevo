@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     member do
       post :add_track, path: '/add_track'
     end
+    member do
+      delete :delete_track
+    end
     resources :posts do
       collection do
         get '/user_posts', to: 'posts#user_posts', as: :user

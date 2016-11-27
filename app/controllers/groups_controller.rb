@@ -52,6 +52,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def delete_track
+    group = Group.find(params[:id])
+    track_id = Track.find(params[:track_id])
+
+    #track = track.find(params[:track_id]) 
+    @selection = Selection.find(:group_id, :track_id)
+
+    @selection.destroy
+    
+  end
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
@@ -99,7 +109,9 @@ class GroupsController < ApplicationController
       end
     end
   end
-
+  
+  def delete_role
+  end
   
   
 
@@ -107,9 +119,9 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
-    @track = Track.find(params[:id])
+    
     @group.destroy
-    @track.destroy
+    
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
@@ -122,7 +134,7 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:title)
+      params.require(:group).permit(:title, :group_id)
     end
 
     def role_params

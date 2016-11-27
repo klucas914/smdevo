@@ -40,7 +40,7 @@
          <td><%= role.user.name %></td>
          <td><%= role.user.email %></td>
          <td><%= role.role_type %></td>
-         <td><%= link_to 'Remove', {method: 'delete'}, class: 'btn btn-danger' %></td>
+         <td><%= link_to 'Remove', {method: 'delete role'}, class: 'btn btn-danger' %></td>
         </tr>
     <% end %> 
      
@@ -75,7 +75,7 @@
   <% @group.tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
-      <td><%= link_to 'Remove',  {method: 'delete'}, class: 'btn btn-danger' %></td>
+      <td><%= link_to 'Remove', delete_track_group_path(@group, track), method: :delete, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
 
@@ -91,7 +91,7 @@
 </div>
 <p>
 <%= link_to 'Back', groups_path %>  |
-<%= link_to 'Posts', group_posts_path(@group) %>
+<%= link_to 'Go to Group Page', group_posts_path(@group) %>
 </p>
 </div>
 </div>
