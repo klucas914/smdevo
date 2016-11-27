@@ -10,7 +10,7 @@ class JournalPolicy < ApplicationPolicy
   end  
 
   def destroy?
-    user.admin? || record.user == user
+    record.user == user
   end
 
   def edit?

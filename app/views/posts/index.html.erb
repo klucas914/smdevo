@@ -15,6 +15,7 @@
     <div class="card card-block">
     <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
       <p>New posts will be public.</p>
+      
         <div class="container-fluid">
          <a href="<%= user_group_posts_path(:group_id) %>" class="list-group-item list-group-item-action">Switch to your personal page</a>
       </div>
@@ -54,5 +55,13 @@
          
       <% end %>
       </div>
+  </div>
+
+  <div class="card card-block">
+    <h4 class="card-title"><%= @group.title %> Members</h4>
+    <p><% @group.users.each do |user| %>
+        <%= user.name %><br />
+      <% end %>
+    </p>
   </div>
 </div>
