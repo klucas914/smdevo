@@ -7,17 +7,17 @@
       <div class="card">
           <h4 class="card-header">Respond</h4>
             <div class="card-block">
-              <p class="card-text"><%= @activity.respond %></p>
+              <p class="card-text" style="white-space: pre-line;"><%= @activity.respond %></p>
             <p>I want to respond with a personal post: <%= link_to 'Journal' %></p>
             <p>I want to respond by posting to a group: <%#= link_to 'New Post', new_group_post_path(@groups) %></p>
 
             </div>
         </div>
 
- <%= form_tag url_for(action: :new), {method: 'post'} do %> 
-      <td><%= select_tag :group_id, options_for_select(groups.collect{ |g| [g.title, t.id]}) %></td>
-      <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
-    <% end %>
+ <%#= form_tag url_for(action: :new), {method: 'post'} do %> 
+     <td><%#= select_tag :group_id, options_for_select(groups.collect{ |g| [g.title, t.id]}) %></td>
+      <td><%#= submit_tag 'Add', class: 'btn btn-success' %></td>
+    <%# end %>
   </p>
 <%= link_to 'Back', reflect_track_activity_path %>  |
 <%= link_to 'Home', root_url %>
