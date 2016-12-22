@@ -52,3 +52,4 @@ gem 'devise'
 gem 'pundit'
 gem 'digital_bible_platform'
 gem 'httparty'
+gem 'rails_12factor', group: :production
