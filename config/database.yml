@@ -16,7 +16,11 @@
 #
 default: &default
   adapter: postgresql
-  encoding: unicode
+  #encoding: unicode
+  #the following were added
+  encoding: "utf-8"
+  pool: 5
+  timeout: 5000
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -24,6 +28,11 @@ default: &default
 development:
   <<: *default
   database: smdevo_development
+  #the following were added
+  encoding: "utf-8"
+  host: "localhost"
+  port: 5432
+  pool: 5
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +67,11 @@ development:
 test:
   <<: *default
   database: smdevo_test
+  #the following were added
+  encoding: "utf-8"
+  host: "localhost"
+  port: 5432
+  pool: 5
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -79,7 +93,16 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: smdevo_production
-  username: smdevo
-  password: <%= ENV['SMDEVO_DATABASE_PASSWORD'] %>
+  #<<: *default
+  #database: smdevo_production
+  #username: smdevo
+  #password: <%= ENV['SMDEVO_DATABASE_PASSWORD'] %>
+#the following was added
+  encoding:           <%= ENV["DB_ENCODING"] || "utf-8"                       %>
+  host:               <%= ENV["DB_HOST"]                                      %>
+  port:               <%= ENV["DB_PORT"]                                      %>
+  database:           <%= ENV["DB_NAME"]                                      %>
+  username:           <%= ENV["DB_USERNAME"]                                  %>
+  password:           <%= ENV["DB_PASSWORD"]                                  %>
+  pool:               <%= ENV["DB_CONN_POOL"] || 20                           %>
+
