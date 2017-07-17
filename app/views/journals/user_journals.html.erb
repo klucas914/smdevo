@@ -4,7 +4,7 @@
    
   <div class="col-sm-7">
       <div class="card card-block">
-      <h4 class="card-title"><%= @user.name %>'s Journals</h4>
+      <h4 class="card-title"><%= @user.name %>'s Journal Entries</h4>
       <%= link_to 'New Journal Post', new_journal_path %>
       </div>
 
@@ -13,7 +13,8 @@
          <h4><%= journal.created_at.strftime("%B %e, %Y") %></h4>
          <p><%= journal.entry %></p>
          <%= link_to 'Edit', edit_journal_path(journal) %>   |
-         <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?'} %>
+         <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?'} %>   |
+         <%= link_to 'Share with Group' %>
        </div>
        <% end %>
         <p>
@@ -25,7 +26,7 @@
  
   <div class="card card-block">
     <h4 class="card-title">You are on your personal page.</h4>
-      <p>New posts will be kept private unless marked public.</p>
+      <p>New posts will be kept private unless shared with a group.</p>
         
   </div>
 

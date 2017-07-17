@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :entry %>
-    <%= f.text_area :entry %>
+    <%= f.text_area :entry, :rows => "7", class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>
