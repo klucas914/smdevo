@@ -93,7 +93,7 @@ class ActivitiesController < ApplicationController
   def respond
     @activity = Activity.find(params[:id])
     track = Track.find(params[:track_id])
-    @group = Group.all
+    groups = Group.all
   end
 end
 

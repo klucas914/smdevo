@@ -1,17 +1,19 @@
 <div class="card card-block" >
   <div class="card-header">
-    <%= current_user.name %><br />
+    <%= @user.name %><br />
   </div>
   <div class="card-block">
-      <p class="card-text"><%= journals.entry %></p>
+    <!--<%# @journals.each do |journal| %>-->
+      <p class="card-text"><%= journal.entry %></p>
+     
   </div>
   <div class="card-footer">
     <%#=entry.journal.published.strftime("%B %e, %Y %I %p") %><br />
-    <% if policy(post).edit? %>
+    <%# if policy(post).edit? %>
     <%#= link_to 'Edit', edit_group_post_path(post.group, post) %>
-    <% end %>
-    <% if policy(post).destroy? %> 
+    <%# end %>
+    <% #if policy(post).destroy? %> 
     <%#= link_to 'Delete', group_post_path(post.group, post), method: :delete, data: { confirm: 'Are you sure?'} %>
-    <% end %>
+    <%# end %>
   </div>
 </div>

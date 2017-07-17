@@ -32,10 +32,10 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.json
   def create
-    @user = current_user
-    @journal = Journal.new(journal_params)
-    #@journal = Journal.new(journal_params)
     #@user = current_user
+    @journal = Journal.new(journal_params)
+    @journal.user_id = current_user.id
+    
 
     respond_to do |format|
       if @journal.save
@@ -80,10 +80,9 @@ class JournalsController < ApplicationController
 
   def user_journals
     @journals = policy_scope(Journal).order(id: :desc)
-    @tracks = Track.all
+    #@tracks = Track.all
     @user = current_user
-    @groups = Group.all
-
+    #@groups = Group.all
   end
 
   private
@@ -92,6 +91,6 @@ class JournalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def journal_params
-      params.require(:journal).permit(:entry)
+      params.require(:journal).permit(:entry, :user_id)
     end
 end

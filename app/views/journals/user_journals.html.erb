@@ -5,13 +5,38 @@
   <div class="col-sm-7">
       <div class="card card-block">
       <h4 class="card-title"><%= @user.name %>'s Journals</h4>
-      <%#= link_to 'New Journal Post', new_user_journal_path(@user) %>
+      <%= link_to 'New Journal Post', new_journal_path %>
       </div>
 
-      <!--<div class="card card-block">-->
-       
+       <% @journals.each do |journal| %>
+       <div class="card card-block">
+         <h4><%= journal.created_at.strftime("%B %e, %Y") %></h4>
+         <p><%= journal.entry %></p>
+         <%= link_to 'Edit', edit_journal_path(journal) %>   |
+         <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?'} %>
+       </div>
+       <% end %>
         <p>
-         <%= render 'list' %>
+         <%#= render 'list' %>
    
-      <!-- </div> -->
+      </div>
   </div>
+  <div class="col-sm-4">
+ 
+  <div class="card card-block">
+    <h4 class="card-title">You are on your personal page.</h4>
+      <p>New posts will be kept private unless marked public.</p>
+        
+  </div>
+
+  <div class="card card-block">
+      <h4 class="card-title">My Groups</h4>
+     <div class="container-fluid">
+    <% @user.groups.each do |group| %>
+         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
+      <% end %>
+
+  
+ </div>     
+</div>
+</div>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get '/user_journals', to: 'journals#user_journals', as: :user
     end
   end
+  resources :posts
   resources :users
   resources :groups do |t|
     member do
@@ -40,5 +41,6 @@ Rails.application.routes.draw do
     end
   end
   resources :scriptures
-  root 'posts#user_posts'
+  #root 'posts#user_posts'
+  root 'journals#user_journals'
 end

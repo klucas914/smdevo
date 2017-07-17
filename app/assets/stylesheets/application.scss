@@ -16,11 +16,13 @@
 @import "bootstrap";
 
 .jumbotron {
-	background-color: #F95F48;
-	color:  white;
+	/*background-color: #F95F48;*/
+	background-color: white;
+	color:  black;
 	margin:0;
 	text-align: center;
 	font-size: xx-large;
+	padding: 10px;
 }
 
 body {

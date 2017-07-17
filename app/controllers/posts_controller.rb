@@ -40,8 +40,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @group = Group.find(params[:group_id])
-    @post = @group.posts.find(params[:id])
+   @group = Group.find(params[:group_id])
+   @post = @group.posts.find(params[:id])
+   # @post = Post.find(params[:id])
     @user = current_user
   end
 
@@ -68,6 +69,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     @group = Group.find(params[:group_id])
+    #@post = post.find(params[:id])
     @post = @group.posts.find(params[:id])
     @user = current_user
 
@@ -87,6 +89,7 @@ class PostsController < ApplicationController
   def destroy
     group = Group.find(params[:group_id])
     @post = group.posts.find(params[:id])
+    #@post = posts.find(params[:id])
     @post.destroy
     respond_to do |format|
       format.html { redirect_to group_posts_url, notice: 'Post was successfully destroyed.' }

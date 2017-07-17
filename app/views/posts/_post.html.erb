@@ -14,5 +14,8 @@
     <% if policy(post).destroy? %> 
     <%= link_to 'Delete', group_post_path(post.group, post), method: :delete, data: { confirm: 'Are you sure?'} %>
     <% end %>
+  <%#= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?'} %>
+  <%#= link_to 'Edit', edit_post_path(post) %>
   </div>
+
 </div>
