@@ -1,43 +1,41 @@
 <div class="container-fluid">
-
-<div class="row-fluid">
-   
-  <div class="col-sm-7">
-      <div class="card card-block">
-      <h4 class="card-title"><%= @user.name %>'s Journal Entries</h4>
-      <%= link_to 'New Journal Post', new_journal_path %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= @user.name %>'s Journal Entries</h4>
+          <a href="<%= new_journal_path %>" class="card-link">New Journal Entry</a>
+        </div>
       </div>
-
-       <% @journals.each do |journal| %>
-       <div class="card card-block">
-         <h4><%= journal.created_at.strftime("%B %e, %Y") %></h4>
-         <p><%= journal.entry %></p>
-         <%= link_to 'Edit', edit_journal_path(journal) %>   |
-         <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?'} %>   |
-         <%= link_to 'Share with Group' %>
+      <% @journals.each do |journal| %>
+       <div class="card">
+         <div class="card-block">
+           <h4><%= journal.created_at.strftime("%B %e, %Y") %></h4>
+           <p><%= journal.entry %></p>
+           <a href="<%= edit_journal_path(journal) %>" class="card-link">Edit</a>  |
+           <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?' } %> |
+           <a href="#" class="card-link">Share with Group</a>
+         </div>
        </div>
-       <% end %>
-        <p>
-         <%#= render 'list' %>
-   
-      </div>
-  </div>
-  <div class="col-sm-4">
- 
-  <div class="card card-block">
-    <h4 class="card-title">You are on your personal page.</h4>
-      <p>New posts will be kept private unless shared with a group.</p>
-        
-  </div>
-
-  <div class="card card-block">
-      <h4 class="card-title">My Groups</h4>
-     <div class="container-fluid">
-    <% @user.groups.each do |group| %>
-         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
       <% end %>
-
-  
- </div>     
-</div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">You are on your personal page.</h4>
+          <p>New posts will be kept private unless shared with a group.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">My Groups</h4>
+            <div class="container-fluid">
+              <% @user.groups.each do |group| %>
+                <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

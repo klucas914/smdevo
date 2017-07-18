@@ -1,67 +1,65 @@
 <div class="container-fluid">
-
-<div class="row-fluid">
-  <div class="col-sm-7">
-    <div class="card card-block">
-      <h4 class="card-title"><%= @group.title %> Group's Posts</h4>
-      <%= link_to 'New Post', new_group_post_path(@group) %><br />
-    </div>  
-
-        <%= render 'list' %>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= @group.title %> Group's Posts</h4>
+          <%= link_to 'New Post', new_group_post_path(@group) %><br />
+        </div>
+      </div>  
+      <%= render 'list' %>
     </div>
-  </div>
-
-<div class="col-sm-4">
-    <div class="card card-block">
-    <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
-      <p>New posts will be public.</p>
-      
-        <div class="container-fluid">
-         <a href="<%= root_path %>" class="list-group-item list-group-item-action">Switch to your personal page</a>
-      </div>
-  </div>
-
-  <div class="card card-block">
-      <h4 class="card-title">Activities</h4>
-      <p>
-      <div class="container">
-         <% if @tracks.empty? %>
-            <p> There aren't any new activities.</p>
-          <% end %>
-         <% else @tracks.each do |track| %>
-          <div class="card card-block" style="max-width: 20rem;">
-            <div align="center">
-            <h4 class="card-title"><%= track.title %></h4></div>
-            <div class="card-block">
-                <% track.activities.each do |activity| %>
-                       <a href="<%= receive_track_activity_path(activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a></br />
-                <% end %>
-              
-            </div> 
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
+          <p>New posts will be public.</p>
+          <div class="container-fluid">
+           <a href="<%= root_path %>" class="list-group-item list-group-item-action">Switch to your personal page</a>
           </div>
-         <% end %>
+        </div>
       </div>
-      <p>
-  </div>
-
-  
-
-  <div class="card card-block">
-    <h4 class="card-title">My Groups</h4>
-        <div class="container-fluid">
-                       
-      <% @user.groups.each do |group| %>
-         <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
-         
-      <% end %>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">Activities</h4>
+          <div class="container">
+            <% if @tracks.empty? %>
+              <p> There aren't any new activities.</p>
+            <% end %>
+            <% else @tracks.each do |track| %>
+              <div class="card card-block" style="max-width: 20rem;">
+                <div align="center">
+                  <h4 class="card-title"><%= track.title %></h4>
+                </div>
+                <div class="card-block">
+                  <% track.activities.each do |activity| %>
+                    <a href="<%= receive_track_activity_path(activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a></br />
+                  <% end %>
+                </div> 
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-  </div>
-
-  <div class="card card-block">
-    <h4 class="card-title"><%= @group.title %> Members</h4>
-    <p><% @group.users.each do |user| %>
-        <%= user.name %><br />
-      <% end %>
-    </p>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">My Groups</h4>
+          <div class="container-fluid">
+            <% @user.groups.each do |group| %>
+              <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title"><%= @group.title %> Members</h4>
+          <p><% @group.users.each do |user| %>
+            <%= user.name %><br />
+          <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
