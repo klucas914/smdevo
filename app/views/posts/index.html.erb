@@ -4,9 +4,24 @@
       <div class="card">
         <div class="card-block">
           <h4 class="card-title"><%= @group.title %> Group's Posts</h4>
-          <%= link_to 'New Post', new_group_post_path(@group) %><br />
+          <!--<%= link_to 'New Post', new_group_post_path(@group) %><br />-->
+          <div class="container">
+            <%= form_for :post, url: group_posts_path do |f| %>
+              <div class="form-group">
+                <%= f.label "Join the Conversation:" %>
+                <%= f.text_area :content, :rows => "3", class: "form-control" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :post_to %>
+                <%= f.select :group_id, options_for_select(@user.groups.collect{ |g| [g.title, g.id] }), class: "form-control"  %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Create Post" %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>  
+      </div>
       <%= render 'list' %>
     </div>
     <div class="col-sm-4">
