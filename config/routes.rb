@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       post :create_role
     end
     member do
+      delete :delete_role
+    end
+    member do
       post :add_track, path: '/add_track'
     end
     member do

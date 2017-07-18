@@ -4,7 +4,19 @@
       <div class="card">
         <div class="card-block">
           <h4 class="card-title"><%= @user.name %>'s Journal Entries</h4>
-          <a href="<%= new_journal_path %>" class="card-link">New Journal Entry</a>
+          <!--<a href="<%= new_journal_path %>" class="card-link">New Journal Entry</a>-->
+          <div class="container">
+            <%= form_for :journal, url: journals_path do |f| %>
+              <p>
+              <div class="form-group">
+                <%= f.label :new_journal_entry %><br>
+                <%= f.text_area :entry, :rows => "3", class: "form-control" %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Save Entry"  %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
       <% @journals.each do |journal| %>

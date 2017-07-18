@@ -16,14 +16,14 @@
     <%= f.datetime_select :published %>
   </div>-->
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :rows => "7", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :group %>
-    <%= f.select :group_id, options_for_select(@user.groups.collect{ |g| [g.title, g.id] })  %>
+  <div class="form-group">
+    <%= f.label :post_to %>
+    <%= f.select :group_id, options_for_select(@user.groups.collect{ |g| [g.title, g.id] }), class: "form-control"  %>
   </div>
      
 <p>

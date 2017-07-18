@@ -7,7 +7,7 @@
       <p class="card-text"><%= post.content %></p>
   </div>
   <div class="card-footer">
-    <%=post.published.strftime("%B %e, %Y %I %p") %><br />
+    <%=post.created_at.strftime("%B %e, %Y %I %p") %><br />
     <% if policy(post).edit? %>
     <%= link_to 'Edit', edit_group_post_path(post.group, post) %>
     <% end %>

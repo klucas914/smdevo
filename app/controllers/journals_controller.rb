@@ -73,7 +73,7 @@ class JournalsController < ApplicationController
     @journal = Journal.find(params[:id])
     @journal.destroy
     respond_to do |format|
-      format.html { redirect_to journals_url, notice: 'Journal was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Journal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @track_options = Track
       .where('id NOT IN (SELECT s.track_id FROM selections s WHERE s.group_id = ?)', @group.id)
-    #@track = Track.all
+    track = Track.all
   end
 
   # GET /groups/new
@@ -53,14 +53,10 @@ class GroupsController < ApplicationController
   end
 
   def delete_track
-    group = Group.find(params[:id])
-    track_id = Track.find(params[:track_id])
-
-    #track = track.find(params[:track_id]) 
-    @selection = Selection.find(:group_id, :track_id)
-
-    @selection.destroy
-    
+    @group = Group.find(params[:id])
+    track = Track.find(params[:track_id]) 
+    @selection = Selection.find(group_id: @group, track_id: track)
+    @selection.destroy  
   end
 
   # PATCH/PUT /groups/1
@@ -82,11 +78,8 @@ class GroupsController < ApplicationController
   def create_role
     # Find the user by email
     email = role_params[:user][:email]
-    
     #name = role_params[:name]
     user = User.find_by_email(email)
-    
-
     # If they don't exist, invite them
     #unless user
       # NOTE: we give them a fake password for now. Eventually we'll use the
@@ -111,15 +104,24 @@ class GroupsController < ApplicationController
   end
   
   def delete_role
+    #@group = Group.find(params[:id])
+    role = Role.find(params[:id])
+    respond_to do |format|  
+      if role.destroy!
+        format.html { redirect_to @group, notice: 'User was successfully removed from group.' }
+        format.json { render :show, status: :created, location: @group }
+      else
+        format.html { render :show, notice: 'There was an error removing the user from the group.' }
+        format.json { render json: role.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   
-
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
     @group = Group.find(params[:id])
-    
     @group.destroy
     
     respond_to do |format|

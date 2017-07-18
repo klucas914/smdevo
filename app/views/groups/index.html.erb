@@ -1,32 +1,25 @@
-<p id="notice"><%= notice %>
-  
 <div class="container">
-<div class="card card-block">
-  <h1 class="card-title">Groups</h1>
-  <p class="card-text">
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-     
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.title %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
-</p>
-</div>
+  <div class="card">
+    <div class="card-block">
+      <h1 class="card-title">Groups</h1>
+      <p class="card-text">
+        <%= button_to 'Create a Group', new_group_path, class: "btn btn-primary" %>
+      </p>
+      <table class="table table-striped">
+        <thead>
+          <tr></tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+            <tr>
+              <td><%= group.title %></td>
+              <td><%= link_to 'View', group %></td>
+              <td><%= link_to 'Edit', edit_group_path(group) %></td>
+              <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
