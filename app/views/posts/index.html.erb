@@ -31,7 +31,12 @@
           <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
           <p>New posts will be public.</p>
           <div class="container-fluid">
-           <a href="<%= root_path %>" class="list-group-item list-group-item-action">Switch to your personal page</a>
+           <a href="<%= root_path %>" class="list-group-item list-group-item-action">Switch to your personal page</a><br />
+          </div>
+          <div class="container-fluid">
+            <% @user.groups.each do |group| %>
+              <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action">Switch to <%= group.title %></a><br />
+            <% end %>
           </div>
         </div>
       </div>
@@ -53,16 +58,6 @@
                   <% end %>
                 </div> 
               </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title">My Groups</h4>
-          <div class="container-fluid">
-            <% @user.groups.each do |group| %>
-              <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action"><%= group.title %></a><br />
             <% end %>
           </div>
         </div>
