@@ -22,11 +22,15 @@
       <% @journals.each do |journal| %>
        <div class="card">
          <div class="card-block">
-           <h4><%= journal.created_at.strftime("%B %e, %Y") %></h4>
-           <p><%= journal.entry %></p>
-           <a href="<%= edit_journal_path(journal) %>" class="card-link">Edit</a>  |
-           <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?' } %> |
-           <a href="#" class="card-link">Share with Group</a>
+           <h4 class="card-header"><%= journal.created_at.strftime("%B %e, %Y") %></h4>
+           <div class="card-block">
+             <p class="card-text"><%= journal.entry %></p>
+           </div>
+           <div class="card-footer">
+             <a href="<%= edit_journal_path(journal) %>" class="card-link">Edit</a>  |
+             <%= link_to 'Delete', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?' } %> |
+             <a href="#" class="card-link">Share with Group</a>
+           </div>
          </div>
        </div>
       <% end %>
