@@ -3,8 +3,24 @@
     <div class="col-sm-8">
       <div class="card">
         <div class="card-block">
-          <h4 class="card-title"><%= @group.title %> Group's Posts</h4>
-          <!--<%= link_to 'New Post', new_group_post_path(@group) %><br />-->
+          <h4 class="card-title">
+            <div class="row">
+              <div class="col-sm-9">
+                <%= @group.title %> Group's Posts
+              </div>
+              <div class="col-sm-1">
+
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Group Members</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <% @group.users.each do |user| %>
+                <a class="dropdown-item" href="#"><%= user.name %></a>
+                <% end %>
+              </div>
+            </div>
+            </div>
+            </div>
+          </h4>
           <div class="container">
             <%= form_for :post, url: group_posts_path do |f| %>
               <div class="form-group">
@@ -30,14 +46,15 @@
         <div class="card-block">
           <h4 class="card-title">You are on the <%= @group.title %> page.</h4>
           <p>New posts will be public.</p>
-          <div class="container-fluid">
-           <a href="<%= root_path %>" class="list-group-item list-group-item-action">Switch to your personal page</a><br />
-          </div>
-          <div class="container-fluid">
-            <% @user.groups.each do |group| %>
-              <a href="<%= group_posts_path(group) %>" class="list-group-item list-group-item-action">Switch to <%= group.title %></a><br />
-            <% end %>
-          </div>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Switch Groups</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="<%= root_path %>">Go to Personal Journal</a>
+              <% @user.groups.each do |group| %>
+              <a class="dropdown-item" href="<%= group_posts_path(group) %>">Go to <%= group.title %></a>
+              <% end %>
+            </div>
+      </div>
         </div>
       </div>
       <div class="card">
@@ -60,15 +77,6 @@
               </div>
             <% end %>
           </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title"><%= @group.title %> Members</h4>
-          <p><% @group.users.each do |user| %>
-            <%= user.name %><br />
-          <% end %>
-          </p>
         </div>
       </div>
     </div>
