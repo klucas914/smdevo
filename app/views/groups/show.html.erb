@@ -40,7 +40,7 @@
          <td><%= role.user.name %></td>
          <td><%= role.user.email %></td>
          <td><%= role.role_type %></td>
-         <td><%= link_to 'Remove', {method: 'delete_role'}, class: 'btn btn-danger' %></td>
+         <td><%= link_to 'Remove', role, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
     <% end %> 
      

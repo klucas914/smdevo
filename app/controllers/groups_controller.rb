@@ -103,19 +103,19 @@ class GroupsController < ApplicationController
     end
   end
   
-  def delete_role
+  #def delete_role
     #@group = Group.find(params[:id])
-    role = Role.find(params[:id])
-    respond_to do |format|  
-      if role.destroy!
-        format.html { redirect_to @group, notice: 'User was successfully removed from group.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :show, notice: 'There was an error removing the user from the group.' }
-        format.json { render json: role.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+   # role = Role.find(params[:id])
+    #respond_to do |format|  
+     # if role.destroy!
+      #  format.html { redirect_to @group, notice: 'User was successfully removed from group.' }
+       # format.json { render :show, status: :created, location: @group }
+      #else
+       # format.html { render :show, notice: 'There was an error removing the user from the group.' }
+        #format.json { render json: role.errors, status: :unprocessable_entity }
+      #end
+    #end
+  #end
   
   
   # DELETE /groups/1
