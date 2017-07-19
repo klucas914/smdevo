@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
   resources :scriptures
   resources :roles
+  resources :selections
   #root 'posts#user_posts'
   root 'journals#user_journals'
 end

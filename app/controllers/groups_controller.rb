@@ -52,12 +52,12 @@ class GroupsController < ApplicationController
     end
   end
 
-  def delete_track
-    @group = Group.find(params[:id])
-    track = Track.find(params[:track_id]) 
-    @selection = Selection.find(group_id: @group, track_id: track)
-    @selection.destroy  
-  end
+  #def delete_track
+   # @group = Group.find(params[:id])
+    #track = Track.find(params[:track_id]) 
+    #@selection = Selection.find(group_id: @group, track_id: track)
+    #@selection.destroy  
+  #end
 
   # PATCH/PUT /groups/1
   # PATCH/PUT /groups/1.json
@@ -102,21 +102,6 @@ class GroupsController < ApplicationController
       end
     end
   end
-  
-  #def delete_role
-    #@group = Group.find(params[:id])
-   # role = Role.find(params[:id])
-    #respond_to do |format|  
-     # if role.destroy!
-      #  format.html { redirect_to @group, notice: 'User was successfully removed from group.' }
-       # format.json { render :show, status: :created, location: @group }
-      #else
-       # format.html { render :show, notice: 'There was an error removing the user from the group.' }
-        #format.json { render json: role.errors, status: :unprocessable_entity }
-      #end
-    #end
-  #end
-  
   
   # DELETE /groups/1
   # DELETE /groups/1.json

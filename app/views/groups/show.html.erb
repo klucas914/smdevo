@@ -72,10 +72,17 @@
     </tr>
     <% end %>
   
-  <% @group.tracks.each do |track| %>
+  <!--<% @group.tracks.each do |track| %>
     <tr>
       <td><%= track.title %></td>
       <td><%= link_to 'Remove', delete_track_group_path(@group, track), method: :delete, class: 'btn btn-danger' %></td>
+    </tr>
+  <% end %>-->
+
+  <% @group.selections.each do |selection| %>
+    <tr>
+      <td><%= selection.track.title %></td>
+      <td><%= link_to 'Remove', selection, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
     </tr>
   <% end %>
 
