@@ -16,38 +16,75 @@
   <body>
     
   <nav class="navbar" id="admin">
-      <div class="navbar-header">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-             <div class="container">
-               <li class="dropdown">
-                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                   <%= current_user.name %>
-                   <span class="caret"></span>
-                 </a>
-                 <ul class="dropdown-menu" role="menu">
-                 <div class="container-fluid">
-                  <li><%= link_to 'Profile', edit_user_registration_path %></li>
-                  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+    <!--<div class="navbar-header">-->
+      <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
+            <div class="container">
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <%= current_user.name %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <div class="container-fluid">
+                    <li class="nav-item">
+                      <a class="nav-link" href="<%= edit_user_registration_path %>">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                      <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+                    </li>
                   </div>
-               </ul>
-           <% end %>
-        </ul>
+                </ul>
+              </li>
+            </div>
+        <% end %>
+      <!--</ul>
+    </div>-->
+    <div class="container">
+    <li class="nav-item">
+      <div class="container">  
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="<%= root_path %>">Go to Personal Journal</a>
+            <% @user.groups.each do |group| %>
+            <a class="dropdown-item" href="<%= group_posts_path(group) %>">Go to <%= group.title %></a>
+            <% end %>
+          </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </li>
+    <% if current_user.try(:admin?) %>
+    <li class="nav-item">
+      <div class="container">  
+        <div class="dropdown show">
+          <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Options</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="<%= tracks_path %>">Tracks</a>
+            <a class="dropdown-item" href="<%= groups_path %>">Groups</a>
+            <a class="dropdown-item" href="<%= users_path %>">Users</a>
+          </div>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  </div>
+  </ul>
+  <!--</div>-->
   </nav>
 
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-          <%= link_to image_tag("formed.png", class: 'img-fluid', :size => "200x140"), root_path %>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <%= link_to image_tag("formed.png", class: 'img-fluid', :size => "200x140"), root_path %>
           <!--<p>Read | Reflect | Respond</p>-->
-      </div>
     </div>
+  </div>
 
    
     <nav class="navbar navbar-toggleable-md">
       <!--<a class="navbar-brand" href="<%= root_path %>">Home</a>-->
-      <% if current_user.try(:admin?) %>
+      <!--<% if current_user.try(:admin?) %>
       <ul class="nav navbar-nav pull-xs-right">
          
          <li class="nav-item">
@@ -65,8 +102,9 @@
          </li>
     
       </ul>
-   <% end %>
+      <% end %>-->
     </nav>
+
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>

@@ -1,13 +1,13 @@
 <div class="card card-block" >
   <div class="card-header">
     <%= post.user.name %><br />
-    <%= post.group.title %> Group
+    <!--<%= post.group.title %> Group-->
   </div>
   <div class="card-block">
       <p class="card-text"><%= post.content %></p>
   </div>
   <div class="card-footer">
-    <%=post.created_at.strftime("%B %e, %Y %I %p") %><br />
+    <%=post.created_at.strftime("%B %e, %Y") %><br />
     <% if policy(post).edit? %>
     <%= link_to 'Edit', edit_group_post_path(post.group, post) %>
     <% end %>
