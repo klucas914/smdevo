@@ -1,11 +1,20 @@
-<p>
 <div class="container">
-<div class="card card-block">
-  <h1 class="card-title"><%= @group.title %></h1>
+<div class="card">
+  <div class="card-block">
+    <div class="row">
+      <div class="col-sm-8">
+        <h1 class="card-title"><%= @group.title %></h1>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to 'Back to Groups', groups_path %>  |
+        <%= link_to 'Group Page', group_posts_path(@group) %>
+      </div>
+    </div>
+  </div>
 </div>
-
-  <div class="card card-block">
-  <p class="card-text">
+<div class="card">
+  <div class="card-block">
+  <!--<p class="card-text">
   <% if @group.errors.any? %>
     <div id= "error_explanation">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -18,91 +27,70 @@
     </div>
   <% end %>
 
-<p>
-<table class= "table table-striped">
-  <tbody>
-     <thead>
-      <th>Group Members</th>
-      <th>Email</th>
-      <th>Role</th>
-      <th></th>
-    </thead>
-    <% if @group.roles.empty? %>
-      <tr>
-        <td> There aren't any members of this group. Add one now...</td>
-        <td></td>
-        <td></td>
-      <% end %>
-      </tr>
-
-    <% else @group.roles.each do |role| %>
-       <tr>
-         <td><%= role.user.name %></td>
-         <td><%= role.user.email %></td>
-         <td><%= role.role_type %></td>
-         <td><%= link_to 'Remove', role, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+<p>-->
+    <div class="container">
+    <table class= "table table-striped">
+      <thead>  
+        <th>Group Members</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% if @group.roles.empty? %>
+        <tr>
+          <td> There aren't any members of this group. Add one now...</td>
+          <td></td>
+          <td></td>
+        <% end %>
         </tr>
-    <% end %> 
-     
-     <tr>
-       <%= form_tag url_for(action: :create_role), {method: 'post'} do %>
-         <td><%= text_field_tag 'role[user][email]',"", class: 'form-control', placeholder: 'john@example.com' %></td>
-         <td><%= select_tag 'role[role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
-        <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
-        <td></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+        <% else @group.roles.each do |role| %>
+        <tr>
+          <td><%= role.user.name %></td>
+          <td><%= role.user.email %></td>
+          <td><%= role.role_type %></td>
+          <td><%= link_to 'Remove', role, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+        <% end %> 
+        <tr>
+          <%= form_tag url_for(action: :create_role), {method: 'post'} do %>
+            <td><%= text_field_tag 'role[user][email]',"", class: 'form-control', placeholder: 'john@example.com' %></td>
+            <td><%= select_tag 'role[role_type]', options_for_select(Role.role_types.to_a.map(&:first), :student), { class: 'form-control'} %></td>
+            <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
+            <td></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
 </div>
- <p></p>
-
-<div class="card card-block">
-<p>
-<table class="table table-striped">
-  <tbody>
-    <thead>
-      <th>Selected Tracks</th>
-      <th></th>
-    </thead>
-  
-  <% if @group.tracks.empty? %>
-    <tr>
-      <td>There aren't any tracks selected for this group. Add one now...</td>
-    </tr>
-    <% end %>
-  
-  <!--<% @group.tracks.each do |track| %>
-    <tr>
-      <td><%= track.title %></td>
-      <td><%= link_to 'Remove', delete_track_group_path(@group, track), method: :delete, class: 'btn btn-danger' %></td>
-    </tr>
-  <% end %>-->
-
-  <% @group.selections.each do |selection| %>
-    <tr>
-      <td><%= selection.track.title %></td>
-      <td><%= link_to 'Remove', selection, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-    </tr>
-  <% end %>
-
-  
-  <tr>
-    <%= form_tag url_for(action: :add_track), {method: 'post'} do %> 
-      <td><%= select_tag :track_id, options_for_select(@track_options.collect{ |t| [t.title, t.id]}) %></td>
-      <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
-    <% end %>
-  </tr>
-  </tbody>
-</table>
+<div class="card">
+  <div class="card-block">
+    <table class="table table-striped">
+      <thead>
+        <th>Selected Tracks</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% if @group.tracks.empty? %>
+        <tr>
+          <td>There aren't any tracks selected for this group. Add one now...</td>
+        </tr>
+        <% end %>
+        <% @group.selections.each do |selection| %>
+        <tr>
+          <td><%= selection.track.title %></td>
+          <td><%= link_to 'Remove', selection, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        </tr>
+        <% end %>
+        <tr>
+        <%= form_tag url_for(action: :add_track), {method: 'post'} do %> 
+          <td><%= select_tag :track_id, options_for_select(@track_options.collect{ |t| [t.title, t.id]}) %></td>
+          <td><%= submit_tag 'Add', class: 'btn btn-success' %></td>
+        <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<p>
-<%= link_to 'Back', groups_path %>  |
-<%= link_to 'Go to Group Page', group_posts_path(@group) %>
-</p>
-</div>
-</div>
-
-
-
-

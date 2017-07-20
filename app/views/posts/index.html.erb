@@ -8,7 +8,7 @@
               <div class="col-sm-9">
                 <%= @group.title %> Group's Posts
               </div>
-              <div class="col-sm-1">
+              <div class="col-sm-3">
 
             <div class="dropdown">
               <button class="btn btn-secondary btn-sm dropdown-toggle pull-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Group Members</button>
@@ -21,6 +21,10 @@
             </div>
             </div>
           </h4>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-block">
           <div class="container">
             <%= form_for :post, url: group_posts_path do |f| %>
               <div class="form-group">
@@ -59,22 +63,20 @@
       </div>
       <div class="card">
         <div class="card-block">
-          <h4 class="card-title">Activities</h4>
+          <h4 class="card-title"><%= @user.name %>'s Activities</h4>
           <div class="container">
             <% if @tracks.empty? %>
               <p> There aren't any new activities.</p>
             <% end %>
             <% else @tracks.each do |track| %>
-              <div class="card card-block" style="max-width: 20rem;">
-                <div align="center">
-                  <h4 class="card-title"><%= track.title %></h4>
-                </div>
-                <div class="card-block">
-                  <% track.activities.each do |activity| %>
-                    <a href="<%= receive_track_activity_path(activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a></br />
-                  <% end %>
-                </div> 
-              </div>
+              <!--<div class="card card-block" style="max-width: 20rem;">-->
+                  <h5 class="card-title"><%= track.title %></h5>
+                    <!--<div class="card-block">-->
+                      <% track.activities.each do |activity| %>
+                        <a href="<%= receive_track_activity_path(activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a>
+                      <% end %><br>
+                    <!--</div>--> 
+                <!--</div>-->
             <% end %>
           </div>
         </div>

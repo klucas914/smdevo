@@ -3,7 +3,9 @@
 <div class="card card-block">
   <h1 class="card-title">Tracks</h1>
   <p class="card-text">
-
+        <% if current_user.admin? %>
+        <%= button_to 'Create a Track', new_track_path, method: :get, class: "btn btn-primary" %>
+        <% end %>
  <p>
 <div class="container">
 <table class="table table-striped">
@@ -36,9 +38,7 @@
   <% end %>
   </tbody>
 </table>
-<% if current_user.admin? %>
-<%= link_to 'New', new_track_path  %>
-<% end %>
+
 </div>
 </p>
 </div>
