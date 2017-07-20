@@ -59,7 +59,10 @@ Rails.application.routes.draw do
   resources :scriptures
   resources :roles
   resources :selections
-  resources :organizations
+  resources :organizations do
+    resources :groups do
+    end
+  end
   #root 'posts#user_posts'
   root 'journals#user_journals'
 end
