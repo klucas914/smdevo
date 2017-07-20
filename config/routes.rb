@@ -25,6 +25,19 @@ Rails.application.routes.draw do
         get '/user_posts', to: 'posts#user_posts', as: :user
       end
     end
+    resources :tracks do
+      resources :activities do
+        member do
+          get :receive
+        end
+        member do
+          get :reflect
+        end
+        member do
+          get :respond
+        end
+      end
+    end
   end
   
   resources :tracks do |t|

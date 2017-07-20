@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    #@groups = Group.find(params[:id])
     @group = Group.find(params[:group_id])
     @posts = @group.posts.order(id: :desc)
     @tracks = @group.tracks.all  

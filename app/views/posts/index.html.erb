@@ -73,8 +73,10 @@
                   <h5 class="card-title"><%= track.title %></h5>
                     <!--<div class="card-block">-->
                       <% track.activities.each do |activity| %>
-                        <a href="<%= receive_track_activity_path(activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a>
-                      <% end %><br>
+                        <h5><%= link_to "#{activity.title}", receive_group_track_activity_path(@group, activity.track, activity) %></h5>
+                        <!--<a href="<%= receive_group_track_activity_path(@group, activity.track, activity) %>" class="list-group-item list-group-item-action"><%= activity.title %></a>-->
+                      <% end %>
+                      <br>
                     <!--</div>--> 
                 <!--</div>-->
             <% end %>

@@ -82,18 +82,21 @@ class ActivitiesController < ApplicationController
   def receive
     @activity = Activity.find(params[:id])
     track = Track.find(params[:track_id])
+    @group = Group.find(params[:group_id])
 
   end
 
   def reflect
     @activity = Activity.find(params[:id])
     track = Track.find(params[:track_id])
+    @group = Group.find(params[:group_id])
   end
 
   def respond
     @activity = Activity.find(params[:id])
     track = Track.find(params[:track_id])
     groups = Group.all
+    @group = Group.find(params[:group_id])
   end
 end
 

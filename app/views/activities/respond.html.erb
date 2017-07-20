@@ -9,13 +9,13 @@
           <div class="card-block">
             <p class="card-text" style="white-space: pre-line;"><%= @activity.respond %></p>
             <p>I want to respond with a personal post: <%= link_to 'Journal', new_journal_path %></p>
-            <p>I want to respond by posting to a group: <%= link_to 'New Post', new_post_path %></p>
+            <p>I want to respond by posting to a group: <%= link_to 'New Post', new_group_post_path(@group) %></p>
           </div>
         </div>
       </p>
-      <%= link_to 'Back', reflect_track_activity_path %>  |
-      <%= link_to 'Personal Page', root_url %>  |
-      <%= link_to 'Group Page' %>
+      <%= link_to 'Back', reflect_group_track_activity_path(@group) %>  |
+      <%= link_to 'Journal', root_url %>  |
+      <%= link_to 'Back to Group', group_posts_path(@group) %>
     </div>
   </div>  
 </div>
