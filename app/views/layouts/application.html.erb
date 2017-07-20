@@ -13,14 +13,13 @@
 
   </head>
 
-  <body>
-    
+  <body>  
   <nav class="navbar" id="admin">
     <ul class="nav navbar-nav">
       <% if user_signed_in? %>
         <div class="btn-group">  
           <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Settings</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="<%= edit_user_registration_path %>">My Profile</a>
               <a class="dropdown-item"><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></a>
@@ -28,11 +27,21 @@
           </div>
           <% if current_user.try(:admin?) %> 
           <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Options</a>
+            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Organization Admin Options</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <a class="dropdown-item" href="<%= tracks_path %>">Tracks</a>
               <a class="dropdown-item" href="<%= groups_path %>">Groups</a>
               <a class="dropdown-item" href="<%= users_path %>">Users</a>
+            </div>
+          </div>
+          <% end %>
+          <% if current_user.try(:admin?) %> 
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formed Admin Options</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="<%= tracks_path %>">Tracks</a>
+              <a class="dropdown-item" href="<%#= groups_path %>">Organizations</a>
+              <a class="dropdown-item" href="<%#= users_path %>">Users</a>
             </div>
           </div>
           <% end %>
@@ -45,8 +54,7 @@
     <div class="container">
       <%= link_to image_tag("formed.png", class: 'img-fluid', :size => "200x140"), root_path %>
           <!--<p>Read | Reflect | Respond</p>-->
-     
-  </div>
+     </div>
   </div>
 
    
